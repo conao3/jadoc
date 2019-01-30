@@ -1,0 +1,46 @@
+language: generic
+dist: trusty
+
+git:
+  depth: 1
+
+addons:
+  apt:
+    packages:
+      - texinfo
+#      - texlive-full
+
+env:
+  global:
+    - PO4A_VERSION=0.55
+
+install:
+  - echo '========== start `install` phase =========================='
+  - echo '========== initialize perl cpan ==========================='
+  - perl -E 'say for @INC'
+  - echo yes | cpan
+  - eval `perl -I$HOME/perl5/lib/perl5 -Mlocal::lib`
+  - perl -E 'say for @INC'
+
+  - echo '========== install po4a ==================================='
+  - curl -LO https://github.com/mquinson/po4a/releases/download/v${PO4A_VERSION}/po4a-${PO4A_VERSION}.tar.gz
+  - tar zxvf po4a-${PO4A_VERSION}.tar.gz
+  - cd po4a-${PO4A_VERSION}
+  - cpan Module::Build
+  - perl Build.PL
+  - yes | ./Build installdeps
+  - perl Build.PL
+  - cd ../
+
+  - echo '========== make path for po4a ============================='
+  - export PERL5LIB=`pwd`/po4a-${PO4A_VERSION}/lib/:$PERL5LIB
+  - export PATH=`pwd`/po4a-${PO4A_VERSION}/:$PATH
+  - perl -E 'say for @INC'
+
+  - echo '========== show versions =================================='
+  - make show-versions
+
+  - echo '========== end `install` phase ============================'
+
+script:
+  - pwd

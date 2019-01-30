@@ -1,0 +1,8 @@
+#+author: conao
+#+date: <2019-01-30 Wed>
+
+[[https://github.com/conao3/japanese-doc][https://img.shields.io/github/license/conao3/japanese-doc.svg?style=flat-square]]
+[[https://github.com/conao3/github-header][https://files.conao3.com/github-header/gif/japanese-doc.gif]]
+
+* What is it?
+This repository distribute ~japanese-doc~ for all Japanese.
