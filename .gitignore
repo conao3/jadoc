@@ -1,8 +1,0 @@
-# conao3's global .gitignore at
-# http://dotfiles.conao3.com/gitignore
-
-# elisp compiled files
-*.elc
-
-# melpa archive file
-archive.json
