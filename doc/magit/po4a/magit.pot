@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-01-27 17:29+0900\n"
+"POT-Creation-Date: 2024-01-27 19:39+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -752,7 +752,7 @@ msgstr ""
 #: orig/magit.texi:96 orig/magit.texi:717
 msgid ""
 "Completion, Confirmation and the Selection: Completion Confirmation and the "
-"Selection"
+"Selection."
 msgstr ""
 
 #. type: menuentry
@@ -1580,7 +1580,7 @@ msgstr ""
 #: orig/magit.texi:337 orig/magit.texi:11139
 msgid ""
 "I am using macOS and SOMETHING works in shell, but not in Magit: I am using "
-"macOS and SOMETHING works in shell but not in Magit"
+"macOS and SOMETHING works in shell but not in Magit."
 msgstr ""
 
 #. type: menuentry

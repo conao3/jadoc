@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-01-27 17:29+0900\n"
+"POT-Creation-Date: 2024-01-27 19:39+0900\n"
 "PO-Revision-Date: 2024-01-27 16:20+0900\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -741,6 +741,12 @@ msgid ""
 "Emacs.  While many fine Git clients exist, only Magit and Git itself deserve "
 "to be called porcelains."
 msgstr ""
+"Magitは、Emacsパッケージとして実装されたバージョン管理システムGitへのインター"
+"フェースです。Magitは、完全なGitの磁器（porcelain）になることを目指していま"
+"す。MagitがすべてのGitコマンドをラップして改善していると主張することはできま"
+"せんが、経験豊富なGitユーザーでも、ほとんどの日常的なバージョン管理タスクを"
+"Emacs内から直接実行できるほど十分に完全です。多くの優れたGitクライアントが存"
+"在しますが、MagitとGit自体だけが磁器（porcelain）と呼ばれるに値します。"
 
 #. type: ifnottex
 #: orig/magit.texi:57
@@ -876,7 +882,7 @@ msgstr ""
 #: orig/magit.texi:96 orig/magit.texi:717
 msgid ""
 "Completion, Confirmation and the Selection: Completion Confirmation and the "
-"Selection"
+"Selection."
 msgstr ""
 
 #. type: menuentry
@@ -1704,7 +1710,7 @@ msgstr ""
 #: orig/magit.texi:337 orig/magit.texi:11139
 msgid ""
 "I am using macOS and SOMETHING works in shell, but not in Magit: I am using "
-"macOS and SOMETHING works in shell but not in Magit"
+"macOS and SOMETHING works in shell but not in Magit."
 msgstr ""
 
 #. type: menuentry
@@ -1761,6 +1767,11 @@ msgid ""
 "staging a hunk or even just part of a hunk is as trivial as staging all "
 "changes made to a file."
 msgstr ""
+"stagingとapplyingはgitのporcelainの中でも最も重要な機能の一つであり、Magitは"
+"gitそのものを含む他のどのporcelainよりも優れています。gitのstagingインター"
+"フェース(@code{git add --patch})はとても面倒なため、多くのユーザーは例外的な"
+"場合を除いて使いません。Magitでは、hunkやhunkの一部をstagingすることは、ファ"
+"イルの全ての変更をstagingすることと同じくらい簡単です。"
 
 #. type: Plain text
 #: orig/magit.texi:367
@@ -1773,6 +1784,12 @@ msgid ""
 "and unstaged changes.  That might sound noisy, but, since sections are "
 "collapsible, it's not."
 msgstr ""
+"Magitのインターフェースの中で最も目立つ部分は、status bufferです。これは現在"
+"のレポジトリに関する情報を表示します。その内容はいくつかのgitコマンドを実行"
+"し、その出力を実行可能にします。その他のことの中で、現在のブランチに関する情"
+"報を表示し、pullされていない変更とpushされていない変更をリストし、stagedと"
+"unstagedの変更を表示するセクションを含みます。これは騒々しいように聞こえるか"
+"もしれませんが、セクションは折りたたみ可能なので、そうではありません。"
 
 #. type: Plain text
 #: orig/magit.texi:373
@@ -1783,6 +1800,10 @@ msgid ""
 "or even just part of a hunk.  The change or changes that these commands - "
 "and many others - would act on are highlighted."
 msgstr ""
+"変更をstagingしたりunstagingするためには、カーソルを変更に置き、@code{s}や"
+"@code{u}をタイプします。変更はファイルやhunk、あるいはリージョンがアクティブ"
+"な場合(つまり選択がある場合)は複数のファイルやhunk、あるいはhunkの一部です。"
+"これらのコマンドが実行される変更や変更はハイライトされます。"
 
 #. type: Plain text
 #: orig/magit.texi:381
@@ -1795,6 +1816,13 @@ msgid ""
 "line.  In fact that's exactly what Magit does internally (which is what lead "
 "to the term \"apply variants\")."
 msgstr ""
+"stagingやunstagingに加えて、Magitは他のいくつかの\"apply variants\"も実装して"
+"います。変更を破棄したり、反転したり、working treeに適用したりすることができ"
+"ます。gitのporcelainはstagingやunstagingにしか対応していないため、コマンドラ"
+"インで単一のhunkを破棄したり、revertしたり、適用したりするには、@code{git "
+"diff ... | ??? | git apply ...}のようなことをしなければなりません。実際には、"
+"Magitは内部的にこれを行っています(これが\"apply variants\"という用語の由来で"
+"す)。"
 
 #. type: Plain text
 #: orig/magit.texi:388
@@ -1805,6 +1833,11 @@ msgid ""
 "use it to its fullest.  Other users wished they had switched to Emacs sooner "
 "so that they would have gotten their hands on Magit earlier."
 msgstr ""
+"Magitはgitのエキスパートのためだけではありませんが、gitとEmacsの経験があるこ"
+"とを前提としています。とはいえ、多くのユーザーがMagitを使うことで、gitが何が"
+"できるのか、そしてそれを最大限に活用するにはどうすればよいかを学んだと報告し"
+"ています。他のユーザーは、Magitに早く切り替えていれば、Magitに早く触れること"
+"ができたと思っています。"
 
 #. type: Plain text
 #: orig/magit.texi:394
@@ -1816,6 +1849,12 @@ msgid ""
 "Layer for Emacs\", and @uref{https://github.com/syl20bnr/spacemacs, "
 "Spacemacs}, an \"Emacs starter-kit focused on Evil\" a try."
 msgstr ""
+"Magitを最大限に活用するためには、Emacsの基本的な機能を知っている必要がありま"
+"すが、Emacsのスキルを習得するのに長い時間はかかりませんし、他のエディタを好む"
+"ユーザーにとってもそれは価値があります。Vimユーザーは、Emacsの拡張可能なVIレ"
+"イヤーである@uref{https://github.com/emacs-evil/evil, Evil}や、\"Evilに焦点を"
+"当てたEmacsスターターキット\"である@uref{https://github.com/syl20bnr/"
+"spacemacs, Spacemacs}を試してみることをお勧めします。"
 
 #. type: Plain text
 #: orig/magit.texi:400
@@ -1825,6 +1864,10 @@ msgid ""
 "control tasks faster than you would on the command line.  You will likely "
 "also start using features that seemed too daunting in the past."
 msgstr ""
+"Magitは一貫性のある効率的なgitのporcelainを提供します。短い学習期間の後、コマ"
+"ンドラインよりも速く、ほとんどの日常的なバージョン管理タスクを実行できるよう"
+"になります。過去には難しすぎると思われていた機能を使い始めることもあるでしょ"
+"う。"
 
 #. type: Plain text
 #: orig/magit.texi:412
@@ -1840,6 +1883,15 @@ msgid ""
 "commands that are useful for resolving conflicts and resuming the sequence "
 "after doing so."
 msgstr ""
+"Magitはgitを完全に受け入れています。多くのGUIクライアントが行っているように、"
+"単純で柔軟なインターフェースを使って、単純なものだけでなく、多くの高度な機能"
+"を公開しています。もちろん、Magitはlog、clone、push、そして他のコマンドをサ"
+"ポートしています。これらのコマンドは通常、目立つ方法で失敗することはありませ"
+"ん。しかし、単一のステップで完了できないこともよくあります。Magitは、merge、"
+"rebase、cherry-pick、revert、blameなどのタスクを完全にサポートしています。こ"
+"れらのタスクを開始するコマンドだけでなく、途中でコンテキストに応じた情報を表"
+"示し、衝突を解決し、その後のシーケンスを再開するのに役立つコマンドも提供して"
+"います。"
 
 #. type: Plain text
 #: orig/magit.texi:420
@@ -1855,6 +1907,16 @@ msgid ""
 "@code{submodule}, @code{subtree}, @code{tag}, and @code{worktree.} Many more "
 "Magit porcelain commands are implemented on top of Git plumbing commands."
 msgstr ""
+"Magitは、少なくとも以下のgitのporcelainコマンドをラップし、多くの場合、改善し"
+"ています。@code{add}、@code{am}、@code{bisect}、@code{blame}、@code{branch}、"
+"@code{checkout}、@code{cherry}、@code{cherry-pick}、@code{clean}、"
+"@code{clone}、@code{commit}、@code{config}、@code{describe}、@code{diff}、"
+"@code{fetch}、@code{format-patch}、@code{init}、@code{log}、@code{merge}、"
+"@code{merge-tree}、@code{mv}、@code{notes}、@code{pull}、@code{rebase}、"
+"@code{reflog}、@code{remote}、@code{request-pull}、@code{reset}、"
+"@code{revert}、@code{rm}、@code{show}、@code{stash}、@code{submodule}、"
+"@code{subtree}、@code{tag}、@code{worktree}。Magitのporcelainコマンドは、これ"
+"らの上に実装されています。"
 
 #. type: Plain text
 #: orig/magit.texi:426
@@ -1862,12 +1924,14 @@ msgid ""
 "Magit can be installed using Emacs' package manager or manually from its "
 "development repository."
 msgstr ""
+"Magitは、Emacsのパッケージマネージャーを使ってインストールするか、開発レポジ"
+"トリから手動でインストールすることができます。"
 
 #. type: section
 #: orig/magit.texi:433 orig/magit.texi:434
 #, no-wrap
 msgid "Installing from Melpa"
-msgstr ""
+msgstr "Melpaからのインストール"
 
 #. type: Plain text
 #: orig/magit.texi:441
@@ -1877,11 +1941,15 @@ msgid ""
 "it by reading the documentation in the Emacs manual, see @ref{Packages,,,"
 "emacs,}.  Then add one of the archives to @code{package-archives}:"
 msgstr ""
+"MagitはMelpaとMelpa-Stableから入手できます。Emacsのパッケージマネージャーを"
+"使ったことがない場合は、Emacsマニュアルのドキュメントを読んで、それについて詳"
+"しくなるのがいいでしょう。詳しくは@ref{Packages,,,emacs,}を参照してください。"
+"そして、@code{package-archives}にアーカイブの1つを追加します。"
 
 #. type: itemize
 #: orig/magit.texi:445
 msgid "To use Melpa:"
-msgstr ""
+msgstr "Melpaを使うには:"
 
 #. type: lisp
 #: orig/magit.texi:451
@@ -1895,7 +1963,7 @@ msgstr ""
 #. type: itemize
 #: orig/magit.texi:456
 msgid "To use Melpa-Stable:"
-msgstr ""
+msgstr "Melpa-Stableを使うには:"
 
 #. type: lisp
 #: orig/magit.texi:462
@@ -1912,6 +1980,8 @@ msgid ""
 "Once you have added your preferred archive, you need to update the local "
 "package list using:"
 msgstr ""
+"好みのアーカイブを追加したら、ローカルパッケージリストを更新する必要がありま"
+"す。"
 
 #. type: example
 #: orig/magit.texi:469
@@ -1924,6 +1994,7 @@ msgstr ""
 msgid ""
 "Once you have done that, you can install Magit and its dependencies using:"
 msgstr ""
+"これを行ったら、Magitとその依存関係を以下のようにしてインストールできます。"
 
 #. type: example
 #: orig/magit.texi:476
@@ -1950,11 +2021,15 @@ msgid ""
 "Stable.  Install them using @code{M-x package-install RET <package> RET}.  "
 "Of course you may also install them manually from their repository."
 msgstr ""
+"Magitは、MelpaとMelpa-Stableから入手できる@code{compat}、@code{dash}、"
+"@code{transient}、@code{with-editor}ライブラリに依存しています。@code{M-x "
+"package-install RET <package> RET}を使ってそれらをインストールします。もちろ"
+"ん、リポジトリから手動でインストールすることもできます。"
 
 #. type: Plain text
 #: orig/magit.texi:489
 msgid "Then clone the Magit repository:"
-msgstr ""
+msgstr "次に、Magitのリポジトリをcloneします。"
 
 #. type: example
 #: orig/magit.texi:493
@@ -1967,7 +2042,7 @@ msgstr ""
 #. type: Plain text
 #: orig/magit.texi:496
 msgid "Then compile the libraries and generate the info manuals:"
-msgstr ""
+msgstr "次に、ライブラリをコンパイルし、infoマニュアルを生成します。"
 
 #. type: example
 #: orig/magit.texi:499
@@ -1984,6 +2059,10 @@ msgid ""
 "@code{/path/to/magit/config.mk} with the following content before running "
 "@code{make}:"
 msgstr ""
+"Melpaから@code{compat}、@code{dash}、@code{transient}、@code{with-editor}をイ"
+"ンストールしていない場合、@code{make}にそれらを見つける場所を教える必要があり"
+"ます。そのために、@code{make}を実行する前に、以下の内容のファイル@code{/path/"
+"to/magit/config.mk}を作成します。"
 
 #. type: example
 #: orig/magit.texi:512
@@ -1999,7 +2078,7 @@ msgstr ""
 #. type: Plain text
 #: orig/magit.texi:515
 msgid "Finally add this to your init file:"
-msgstr ""
+msgstr "最後に、initファイルに以下を追加します。"
 
 #. type: lisp
 #: orig/magit.texi:519
@@ -2026,6 +2105,8 @@ msgid ""
 "Of course if you installed the dependencies manually as well, then you have "
 "to tell Emacs about them too, by prefixing the above with:"
 msgstr ""
+"もちろん、依存関係も手動でインストールした場合は、Emacsにそれらについても教え"
+"る必要があります。上記の内容に以下を付け加えます。"
 
 #. type: lisp
 #: orig/magit.texi:533
@@ -2044,6 +2125,10 @@ msgid ""
 "path} should not end with a slash, while those of @code{Info-directory-list} "
 "should."
 msgstr ""
+"@code{load-path}にはリポジトリのトップレベルではなく、@code{lisp}サブディレク"
+"トリを追加する必要があり、@code{load-path}の要素はスラッシュで終わってはいけ"
+"ませんが、@code{Info-directory-list}の要素はスラッシュで終わっている必要があ"
+"ることに注意してください。"
 
 #. type: Plain text
 #: orig/magit.texi:541
@@ -2051,6 +2136,8 @@ msgid ""
 "Instead of requiring the feature @code{magit}, you could load just the "
 "autoload definitions, by loading the file @code{magit-autoloads.el}."
 msgstr ""
+"feature @code{magit}をrequireする代わりに、ファイル@code{magit-autoloads.el}"
+"をロードすることで、autoloadの定義だけをロードすることもできます。"
 
 #. type: lisp
 #: orig/magit.texi:544
@@ -2066,11 +2153,14 @@ msgid ""
 "directory using @code{sudo make install} and setting @code{load-path} "
 "accordingly."
 msgstr ""
+"@code{load-path}にそれを追加してリポジトリから直接Magitを実行する代わりに、"
+"@code{sudo make install}を使って他のディレクトリにインストールし、@code{load-"
+"path}をそれに応じて設定することもできます。"
 
 #. type: Plain text
 #: orig/magit.texi:551
 msgid "To update Magit use:"
-msgstr ""
+msgstr "Magitを更新するには、以下のようにします。"
 
 #. type: example
 #: orig/magit.texi:555
@@ -2084,11 +2174,13 @@ msgstr ""
 #: orig/magit.texi:558
 msgid "At times it might be necessary to run @code{make clean all} instead."
 msgstr ""
+"場合によっては、@code{make clean all}を実行する必要があるかもしれません。"
 
 #. type: Plain text
 #: orig/magit.texi:560
 msgid "To view all available targets use @code{make help}."
 msgstr ""
+"利用可能なすべてのターゲットを表示するには、@code{make help}を使います。"
 
 #. type: Plain text
 #: orig/magit.texi:570
@@ -2098,6 +2190,9 @@ msgid ""
 "restart Emacs before doing so, to make sure you are not using an outdated "
 "value for @code{load-path}."
 msgstr ""
+"Magitをインストールしたら、Magit、Git、Emacsのリリースが本当に使っているもの"
+"であることを確認する必要があります。@code{load-path}の古い値を使っていないこ"
+"とを確認するために、それを行う前にEmacsを再起動するのが最善です。"
 
 #. type: example
 #: orig/magit.texi:573
@@ -2108,7 +2203,7 @@ msgstr ""
 #. type: Plain text
 #: orig/magit.texi:576
 msgid "should display something like"
-msgstr ""
+msgstr "以下のようなものが表示されるはずです。"
 
 #. type: example
 #: orig/magit.texi:579
@@ -2122,6 +2217,8 @@ msgid ""
 "Then you might also want to read about options that many users likely want "
 "to customize.  See @ref{Essential Settings}."
 msgstr ""
+"その後、多くのユーザーがカスタマイズしたいと思うオプションについて読むことも"
+"できます。@ref{Essential Settings}を参照してください。"
 
 #. type: Plain text
 #: orig/magit.texi:588
@@ -2131,11 +2228,15 @@ msgid ""
 "advice @code{Info-follow-nearest-node} to instead open the actual manpage.  "
 "See @ref{How to install the gitman info manual?}."
 msgstr ""
+"このマニュアルで見つかるgitのmanページへのクロスリファレンスをたどるには、"
+"@code{gitman} infoマニュアルを手動でインストールするか、代わりに実際のmanペー"
+"ジを開くように@code{Info-follow-nearest-node}にadviceする必要があるかもしれま"
+"せん。@ref{How to install the gitman info manual?}を参照してください。"
 
 #. type: Plain text
 #: orig/magit.texi:590
 msgid "If you are completely new to Magit then see @ref{Getting Started}."
-msgstr ""
+msgstr "Magitが完全に初めての場合は、@ref{Getting Started}を参照してください。"
 
 #. type: Plain text
 #: orig/magit.texi:593
@@ -2143,6 +2244,8 @@ msgid ""
 "If you run into problems, then please see the @ref{FAQ}.  Also see the "
 "@ref{Debugging Tools}."
 msgstr ""
+"問題が発生した場合は、@ref{FAQ}を参照してください。@ref{Debugging Tools}も参"
+"照してください。"
 
 #. type: Plain text
 #: orig/magit.texi:597
@@ -2151,6 +2254,9 @@ msgid ""
 "can keep working on Magit.  See @uref{https://magit.vc/donations}.  for "
 "various donation options."
 msgstr ""
+"最後に、Magitの開発を続けることができるようにするために、寄付を検討してくださ"
+"い。さまざまな寄付オプションについては、@uref{https://magit.vc/donations}を参"
+"照してください。"
 
 #. type: chapter
 #: orig/magit.texi:598 orig/magit.texi:599
@@ -2165,6 +2271,8 @@ msgid ""
 "Magitians use on a daily basis.  It only scratches the surface but should be "
 "enough to get you started."
 msgstr ""
+"この短いチュートリアルでは、多くのMagitiansが日常的に使っている最も重要な機能"
+"について説明します。これは表面的なものに過ぎませんが、始めるのに十分です。"
 
 #. type: Plain text
 #: orig/magit.texi:609
@@ -2174,6 +2282,9 @@ msgid ""
 "you do that, then you should commit all uncommitted changes before "
 "proceeding."
 msgstr ""
+"重要: このチュートリアルのためにリポジトリをcloneするのが最も安全です。また"
+"は、既存のローカルリポジトリを使用することもできますが、その場合は、続行する"
+"前にすべての未コミットの変更をコミットする必要があります。"
 
 #. type: Plain text
 #: orig/magit.texi:612
@@ -2181,6 +2292,8 @@ msgid ""
 "Type @code{C-x g} to display information about the current Git repository in "
 "a dedicated buffer, called the status buffer."
 msgstr ""
+"status bufferと呼ばれる専用のバッファに、現在のGitリポジトリに関する情報を表"
+"示するには、@code{C-x g}をタイプします。"
 
 #. type: Plain text
 #: orig/magit.texi:617
@@ -2190,6 +2303,10 @@ msgid ""
 "other Magit buffers may exist at a given time, but they are often created "
 "from this buffer."
 msgstr ""
+"Magitのほとんどのコマンドは、status bufferから呼び出されます。これは、Magitを"
+"使ってGitとやり取りするための主要なインターフェースと考えることができます。あ"
+"る時点で多くの他のMagitバッファが存在するかもしれませんが、それらはしばしばこ"
+"のバッファから作成されます。"
 
 #. type: Plain text
 #: orig/magit.texi:621
@@ -2198,6 +2315,9 @@ msgid ""
 "sections titled \"Staged changes\", \"Unstaged changes\", \"Unmerged into "
 "origin/master\", \"Unpushed to origin/master\", and many others."
 msgstr ""
+"リポジトリの状態によっては、このバッファには、\"Staged changes\"、\"Unstaged "
+"changes\"、\"Unmerged into origin/master\"、\"Unpushed to origin/master\"など"
+"のセクションが含まれている場合があります。"
 
 #. type: Plain text
 #: orig/magit.texi:629
@@ -2209,6 +2329,12 @@ msgid ""
 "@code{C-x g}.  (When the status buffer, or any Magit buffer for that matter, "
 "is the current buffer, then you can also use just @code{g} to refresh it)."
 msgstr ""
+"ステージされた変更やステージされていない変更がない安全な状態から始めるので、"
+"あなたは簡単に戻ることができます（@code{git reset --hard PRE-MAGIT-STATE}を実"
+"行することで）。いくつかのファイルを編集して変更を保存します。そして、"
+"@code{C-x g}をタイプして、status bufferに戻り、同時にそれを更新します。"
+"(status buffer、またはMagit bufferのどれでも、カレントバッファである場合は、"
+"@code{g}だけを使って更新することもできます。)"
 
 #. type: Plain text
 #: orig/magit.texi:636
@@ -2220,6 +2346,13 @@ msgid ""
 "named \"Unstaged changes\" and type @code{s} to stage the changes you have "
 "made to that file.  That file now appears under \"Staged changes\"."
 msgstr ""
+"@code{p}と@code{n}を使ってセクション間を移動します。いくつかのセクションの本"
+"文が隠されていることに注意してください。ポイントのセクションを展開または折り"
+"たたむには、@code{TAB}をタイプします。また、@code{C-tab}を使って、現在のセク"
+"ションとその子の可視性を切り替えることもできます。\"Unstaged changes\"という"
+"名前のセクション内のファイルセクションに移動し、@code{s}をタイプして、その"
+"ファイルに対して行った変更をステージします。そのファイルは、\"Staged "
+"changes\"の下に表示されます。"
 
 #. type: Plain text
 #: orig/magit.texi:642
@@ -2230,6 +2363,11 @@ msgid ""
 "how the staging (@code{s}) and unstaging (@code{u}) commands operate on the "
 "change at point.  Many other commands behave the same way."
 msgstr ""
+"Magitは、ファイル全体だけでなく、個々のhunkをstageおよびunstageすることができ"
+"ます。stageしたファイルに移動し、@code{TAB}を使って展開し、@code{n}を使って"
+"hunkの1つに移動し、@code{u}をタイプして、それだけをunstageします。stage"
+"（@code{s}）とunstage（@code{u}）コマンドがポイントの変更に作用する方法に注意"
+"してください。多くの他のコマンドも同じように動作します。"
 
 #. type: Plain text
 #: orig/magit.texi:647
@@ -2239,6 +2377,9 @@ msgid ""
 "move down until some added and/or removed lines fall inside the region but "
 "not all of them.  Again type @code{s} to stage."
 msgstr ""
+"hunkセクションの本文の中（@code{C-n}を使って移動）で、@code{C-SPC}を使って"
+"マークを設定し、追加された行と/または削除された行の一部が領域内に入るまで下に"
+"移動しますが、すべてではありません。再び@code{s}をタイプしてstageします。"
 
 #. type: Plain text
 #: orig/magit.texi:654
@@ -2250,6 +2391,10 @@ msgid ""
 "like it does in other buffers, then it doesn't select Magit sections that "
 "can be acted on as a unit."
 msgstr ""
+"複数のファイルを一度にun-/stageすることもできます。ファイルセクションに移動"
+"し、@code{C-SPC}をタイプし、@code{n}を使って次のファイルに移動し、@code{s}を"
+"タイプし、両方のファイルをstageします。この機能を使用するには、マークとポイン"
+"トの両方が、目次"
 
 #. type: Plain text
 #: orig/magit.texi:660

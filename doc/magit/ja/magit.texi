@@ -48,13 +48,7 @@ more details.
 @node Top
 @top Magit User Manual
 
-Magit is an interface to the version control system Git, implemented as an
-Emacs package.  Magit aspires to be a complete Git porcelain.  While we
-cannot (yet) claim that Magit wraps and improves upon each and every Git
-command, it is complete enough to allow even experienced Git users to
-perform almost all of their daily version control tasks directly from within
-Emacs.  While many fine Git clients exist, only Magit and Git itself deserve
-to be called porcelains.
+Magitは、Emacsパッケージとして実装されたバージョン管理システムGitへのインターフェースです。Magitは、完全なGitの磁器（porcelain）になることを目指しています。MagitがすべてのGitコマンドをラップして改善していると主張することはできませんが、経験豊富なGitユーザーでも、ほとんどの日常的なバージョン管理タスクをEmacs内から直接実行できるほど十分に完全です。多くの優れたGitクライアントが存在しますが、MagitとGit自体だけが磁器（porcelain）と呼ばれるに値します。
 
 @noindent
 This manual is for Magit version 3.3.0.50-git.
@@ -101,7 +95,7 @@ Interface Concepts
 * Transient Commands::
 * Transient Arguments and Buffer Variables::
 * Completion, Confirmation and the Selection: Completion Confirmation and the
-Selection.  
+Selection.
 * Mouse Support::
 * Running Git::              
 
@@ -419,7 +413,7 @@ FAQ - Issues and Errors
 * I am having problems committing::
 * I am using MS Windows and cannot push with Magit::
 * I am using macOS and SOMETHING works in shell, but not in Magit: I am using
-macOS and SOMETHING works in shell but not in Magit.  
+macOS and SOMETHING works in shell but not in Magit.
 * Expanding a file to show the diff causes it to disappear::
 * Point is wrong in the @code{COMMIT_EDITMSG} buffer::
 * The mode-line information isn't always up-to-date::
@@ -437,88 +431,40 @@ macOS and SOMETHING works in shell but not in Magit.
 @node Introduction
 @chapter Introduction
 
-Magit is an interface to the version control system Git, implemented as an
-Emacs package.  Magit aspires to be a complete Git porcelain.  While we
-cannot (yet) claim that Magit wraps and improves upon each and every Git
-command, it is complete enough to allow even experienced Git users to
-perform almost all of their daily version control tasks directly from within
-Emacs.  While many fine Git clients exist, only Magit and Git itself deserve
-to be called porcelains.
+Magitは、Emacsパッケージとして実装されたバージョン管理システムGitへのインターフェースです。Magitは、完全なGitの磁器（porcelain）になることを目指しています。MagitがすべてのGitコマンドをラップして改善していると主張することはできませんが、経験豊富なGitユーザーでも、ほとんどの日常的なバージョン管理タスクをEmacs内から直接実行できるほど十分に完全です。多くの優れたGitクライアントが存在しますが、MagitとGit自体だけが磁器（porcelain）と呼ばれるに値します。
 
-Staging and otherwise applying changes is one of the most important features
-in a Git porcelain and here Magit outshines anything else, including Git
-itself.  Git's own staging interface (@code{git add --patch})  is so
-cumbersome that many users only use it in exceptional cases.  In Magit
-staging a hunk or even just part of a hunk is as trivial as staging all
-changes made to a file.
+stagingとapplyingはgitのporcelainの中でも最も重要な機能の一つであり、Magitはgitそのものを含む他のどのporcelainよりも優れています。gitのstagingインターフェース(@code{git
+add
+--patch})はとても面倒なため、多くのユーザーは例外的な場合を除いて使いません。Magitでは、hunkやhunkの一部をstagingすることは、ファイルの全ての変更をstagingすることと同じくらい簡単です。
 
-The most visible part of Magit's interface is the status buffer, which
-displays information about the current repository.  Its content is created
-by running several Git commands and making their output actionable.  Among
-other things, it displays information about the current branch, lists
-unpulled and unpushed changes and contains sections displaying the staged
-and unstaged changes.  That might sound noisy, but, since sections are
-collapsible, it's not.
+Magitのインターフェースの中で最も目立つ部分は、status
+bufferです。これは現在のレポジトリに関する情報を表示します。その内容はいくつかのgitコマンドを実行し、その出力を実行可能にします。その他のことの中で、現在のブランチに関する情報を表示し、pullされていない変更とpushされていない変更をリストし、stagedとunstagedの変更を表示するセクションを含みます。これは騒々しいように聞こえるかもしれませんが、セクションは折りたたみ可能なので、そうではありません。
 
-To stage or unstage a change one places the cursor on the change and then
-types @code{s} or @code{u}.  The change can be a file or a hunk, or when the
-region is active (i.e., when there is a selection) several files or hunks,
-or even just part of a hunk.  The change or changes that these commands -
-and many others - would act on are highlighted.
+変更をstagingしたりunstagingするためには、カーソルを変更に置き、@code{s}や@code{u}をタイプします。変更はファイルやhunk、あるいはリージョンがアクティブな場合(つまり選択がある場合)は複数のファイルやhunk、あるいはhunkの一部です。これらのコマンドが実行される変更や変更はハイライトされます。
 
-Magit also implements several other "apply variants" in addition to staging
-and unstaging.  One can discard or reverse a change, or apply it to the
-working tree.  Git's own porcelain only supports this for staging and
-unstaging and you would have to do something like @code{git diff ... | ??? |
-git apply ...} to discard, revert, or apply a single hunk on the command
-line.  In fact that's exactly what Magit does internally (which is what lead
-to the term "apply variants").
+stagingやunstagingに加えて、Magitは他のいくつかの"apply
+variants"も実装しています。変更を破棄したり、反転したり、working
+treeに適用したりすることができます。gitのporcelainはstagingやunstagingにしか対応していないため、コマンドラインで単一のhunkを破棄したり、revertしたり、適用したりするには、@code{git
+diff ... | ??? | git apply
+...}のようなことをしなければなりません。実際には、Magitは内部的にこれを行っています(これが"apply
+variants"という用語の由来です)。
 
-Magit isn't just for Git experts, but it does assume some prior experience
-with Git as well as Emacs.  That being said, many users have reported that
-using Magit was what finally taught them what Git is capable of and how to
-use it to its fullest.  Other users wished they had switched to Emacs sooner
-so that they would have gotten their hands on Magit earlier.
+Magitはgitのエキスパートのためだけではありませんが、gitとEmacsの経験があることを前提としています。とはいえ、多くのユーザーがMagitを使うことで、gitが何ができるのか、そしてそれを最大限に活用するにはどうすればよいかを学んだと報告しています。他のユーザーは、Magitに早く切り替えていれば、Magitに早く触れることができたと思っています。
 
-While one has to know the basic features of Emacs to be able to make full
-use of Magit, acquiring just enough Emacs skills doesn't take long and is
-worth it, even for users who prefer other editors.  Vim users are advised to
-give @uref{https://github.com/emacs-evil/evil, Evil}, the "Extensible VI
-Layer for Emacs", and @uref{https://github.com/syl20bnr/spacemacs,
-Spacemacs}, an "Emacs starter-kit focused on Evil" a try.
+Magitを最大限に活用するためには、Emacsの基本的な機能を知っている必要がありますが、Emacsのスキルを習得するのに長い時間はかかりませんし、他のエディタを好むユーザーにとってもそれは価値があります。Vimユーザーは、Emacsの拡張可能なVIレイヤーである@uref{https://github.com/emacs-evil/evil,
+Evil}や、"Evilに焦点を当てたEmacsスターターキット"である@uref{https://github.com/syl20bnr/spacemacs,
+Spacemacs}を試してみることをお勧めします。
 
-Magit provides a consistent and efficient Git porcelain.  After a short
-learning period, you will be able to perform most of your daily version
-control tasks faster than you would on the command line.  You will likely
-also start using features that seemed too daunting in the past.
+Magitは一貫性のある効率的なgitのporcelainを提供します。短い学習期間の後、コマンドラインよりも速く、ほとんどの日常的なバージョン管理タスクを実行できるようになります。過去には難しすぎると思われていた機能を使い始めることもあるでしょう。
 
-Magit fully embraces Git.  It exposes many advanced features using a simple
-but flexible interface instead of only wrapping the trivial ones like many
-GUI clients do.  Of course Magit supports logging, cloning, pushing, and
-other commands that usually don't fail in spectacular ways; but it also
-supports tasks that often cannot be completed in a single step.  Magit fully
-supports tasks such as merging, rebasing, cherry-picking, reverting, and
-blaming by not only providing a command to initiate these tasks but also by
-displaying context sensitive information along the way and providing
-commands that are useful for resolving conflicts and resuming the sequence
-after doing so.
+Magitはgitを完全に受け入れています。多くのGUIクライアントが行っているように、単純で柔軟なインターフェースを使って、単純なものだけでなく、多くの高度な機能を公開しています。もちろん、Magitはlog、clone、push、そして他のコマンドをサポートしています。これらのコマンドは通常、目立つ方法で失敗することはありません。しかし、単一のステップで完了できないこともよくあります。Magitは、merge、rebase、cherry-pick、revert、blameなどのタスクを完全にサポートしています。これらのタスクを開始するコマンドだけでなく、途中でコンテキストに応じた情報を表示し、衝突を解決し、その後のシーケンスを再開するのに役立つコマンドも提供しています。
 
-Magit wraps and in many cases improves upon at least the following Git
-porcelain commands: @code{add}, @code{am}, @code{bisect}, @code{blame},
-@code{branch}, @code{checkout}, @code{cherry}, @code{cherry-pick},
-@code{clean}, @code{clone}, @code{commit}, @code{config}, @code{describe},
-@code{diff}, @code{fetch}, @code{format-patch}, @code{init}, @code{log},
-@code{merge}, @code{merge-tree}, @code{mv}, @code{notes}, @code{pull},
-@code{rebase}, @code{reflog}, @code{remote}, @code{request-pull},
-@code{reset}, @code{revert}, @code{rm}, @code{show}, @code{stash},
-@code{submodule}, @code{subtree}, @code{tag}, and @code{worktree.} Many more
-Magit porcelain commands are implemented on top of Git plumbing commands.
+Magitは、少なくとも以下のgitのporcelainコマンドをラップし、多くの場合、改善しています。@code{add}、@code{am}、@code{bisect}、@code{blame}、@code{branch}、@code{checkout}、@code{cherry}、@code{cherry-pick}、@code{clean}、@code{clone}、@code{commit}、@code{config}、@code{describe}、@code{diff}、@code{fetch}、@code{format-patch}、@code{init}、@code{log}、@code{merge}、@code{merge-tree}、@code{mv}、@code{notes}、@code{pull}、@code{rebase}、@code{reflog}、@code{remote}、@code{request-pull}、@code{reset}、@code{revert}、@code{rm}、@code{show}、@code{stash}、@code{submodule}、@code{subtree}、@code{tag}、@code{worktree}。Magitのporcelainコマンドは、これらの上に実装されています。
 
 @node Installation
 @chapter Installation
 
-Magit can be installed using Emacs' package manager or manually from its
-development repository.
+Magitは、Emacsのパッケージマネージャーを使ってインストールするか、開発レポジトリから手動でインストールすることができます。
 
 @menu
 * Installing from Melpa::
@@ -526,18 +472,14 @@ development repository.
 * Post-Installation Tasks::  
 @end menu
 
-@node Installing from Melpa
-@section Installing from Melpa
+@node Melpaからのインストール
+@section Melpaからのインストール
 
-Magit is available from Melpa and Melpa-Stable.  If you haven't used Emacs'
-package manager before, then it is high time you familiarize yourself with
-it by reading the documentation in the Emacs manual, see
-@ref{Packages,,,emacs,}.  Then add one of the archives to
-@code{package-archives}:
+MagitはMelpaとMelpa-Stableから入手できます。Emacsのパッケージマネージャーを使ったことがない場合は、Emacsマニュアルのドキュメントを読んで、それについて詳しくなるのがいいでしょう。詳しくは@ref{Packages,,,emacs,}を参照してください。そして、@code{package-archives}にアーカイブの1つを追加します。
 
 @itemize
 @item
-To use Melpa:
+Melpaを使うには:
 @end itemize
 
 @lisp
@@ -548,7 +490,7 @@ To use Melpa:
 
 @itemize
 @item
-To use Melpa-Stable:
+Melpa-Stableを使うには:
 @end itemize
 
 @lisp
@@ -557,14 +499,13 @@ To use Melpa-Stable:
              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 @end lisp
 
-Once you have added your preferred archive, you need to update the local
-package list using:
+好みのアーカイブを追加したら、ローカルパッケージリストを更新する必要があります。
 
 @example
 M-x package-refresh-contents RET
 @end example
 
-Once you have done that, you can install Magit and its dependencies using:
+これを行ったら、Magitとその依存関係を以下のようにしてインストールできます。
 
 @example
 M-x package-install RET magit RET
@@ -575,29 +516,24 @@ Now see @ref{Post-Installation Tasks}.
 @node Installing from the Git Repository
 @section Installing from the Git Repository
 
-Magit depends on the @code{compat}, @code{dash}, @code{transient} and
-@code{with-editor} libraries which are available from Melpa and
-Melpa-Stable.  Install them using @code{M-x package-install RET <package>
-RET}.  Of course you may also install them manually from their repository.
+Magitは、MelpaとMelpa-Stableから入手できる@code{compat}、@code{dash}、@code{transient}、@code{with-editor}ライブラリに依存しています。@code{M-x
+package-install RET <package>
+RET}を使ってそれらをインストールします。もちろん、リポジトリから手動でインストールすることもできます。
 
-Then clone the Magit repository:
+次に、Magitのリポジトリをcloneします。
 
 @example
 $ git clone https://github.com/magit/magit.git ~/.emacs.d/site-lisp/magit
 $ cd ~/.emacs.d/site-lisp/magit
 @end example
 
-Then compile the libraries and generate the info manuals:
+次に、ライブラリをコンパイルし、infoマニュアルを生成します。
 
 @example
 $ make
 @end example
 
-If you haven't installed @code{compat}, @code{dash}, @code{transient} and
-@code{with-editor} from Melpa or at @code{/path/to/magit/../<package>}, then
-you have to tell @code{make} where to find them.  To do so create the file
-@code{/path/to/magit/config.mk} with the following content before running
-@code{make}:
+Melpaから@code{compat}、@code{dash}、@code{transient}、@code{with-editor}をインストールしていない場合、@code{make}にそれらを見つける場所を教える必要があります。そのために、@code{make}を実行する前に、以下の内容のファイル@code{/path/to/magit/config.mk}を作成します。
 
 @example
 LOAD_PATH  = -L ~/.emacs.d/site-lisp/magit/lisp
@@ -607,7 +543,7 @@ LOAD_PATH += -L ~/.emacs.d/site-lisp/with-editor/lisp
 LOAD_PATH += -L ~/.emacs.d/site-lisp/compat
 @end example
 
-Finally add this to your init file:
+最後に、initファイルに以下を追加します。
 
 @lisp
 (add-to-list 'load-path "~/.emacs.d/site-lisp/magit/lisp")
@@ -619,8 +555,7 @@ Finally add this to your init file:
                "~/.emacs.d/site-lisp/magit/Documentation/"))
 @end lisp
 
-Of course if you installed the dependencies manually as well, then you have
-to tell Emacs about them too, by prefixing the above with:
+もちろん、依存関係も手動でインストールした場合は、Emacsにそれらについても教える必要があります。上記の内容に以下を付け加えます。
 
 @lisp
 (add-to-list 'load-path "~/.emacs.d/site-lisp/dash")
@@ -628,126 +563,89 @@ to tell Emacs about them too, by prefixing the above with:
 (add-to-list 'load-path "~/.emacs.d/site-lisp/with-editor")
 @end lisp
 
-Note that you have to add the @code{lisp} subdirectory to the
-@code{load-path}, not the top-level of the repository, and that elements of
-@code{load-path} should not end with a slash, while those of
-@code{Info-directory-list} should.
+@code{load-path}にはリポジトリのトップレベルではなく、@code{lisp}サブディレクトリを追加する必要があり、@code{load-path}の要素はスラッシュで終わってはいけませんが、@code{Info-directory-list}の要素はスラッシュで終わっている必要があることに注意してください。
 
-Instead of requiring the feature @code{magit}, you could load just the
-autoload definitions, by loading the file @code{magit-autoloads.el}.
+feature
+@code{magit}をrequireする代わりに、ファイル@code{magit-autoloads.el}をロードすることで、autoloadの定義だけをロードすることもできます。
 
 @lisp
 (load "/path/to/magit/lisp/magit-autoloads")
 @end lisp
 
-Instead of running Magit directly from the repository by adding that to the
-@code{load-path}, you might want to instead install it in some other
-directory using @code{sudo make install} and setting @code{load-path}
-accordingly.
+@code{load-path}にそれを追加してリポジトリから直接Magitを実行する代わりに、@code{sudo make
+install}を使って他のディレクトリにインストールし、@code{load-path}をそれに応じて設定することもできます。
 
-To update Magit use:
+Magitを更新するには、以下のようにします。
 
 @example
 $ git pull
 $ make
 @end example
 
-At times it might be necessary to run @code{make clean all} instead.
+場合によっては、@code{make clean all}を実行する必要があるかもしれません。
 
-To view all available targets use @code{make help}.
+利用可能なすべてのターゲットを表示するには、@code{make help}を使います。
 
 Now see @ref{Post-Installation Tasks}.
 
 @node Post-Installation Tasks
 @section Post-Installation Tasks
 
-After installing Magit you should verify that you are indeed using the
-Magit, Git, and Emacs releases you think you are using.  It's best to
-restart Emacs before doing so, to make sure you are not using an outdated
-value for @code{load-path}.
+Magitをインストールしたら、Magit、Git、Emacsのリリースが本当に使っているものであることを確認する必要があります。@code{load-path}の古い値を使っていないことを確認するために、それを行う前にEmacsを再起動するのが最善です。
 
 @example
 M-x magit-version RET
 @end example
 
-should display something like
+以下のようなものが表示されるはずです。
 
 @example
 Magit 2.8.0, Git 2.10.2, Emacs 25.1.1, gnu/linux
 @end example
 
-Then you might also want to read about options that many users likely want
-to customize.  See @ref{Essential Settings}.
+その後、多くのユーザーがカスタマイズしたいと思うオプションについて読むこともできます。@ref{Essential
+Settings}を参照してください。
 
-To be able to follow cross references to Git manpages found in this manual,
-you might also have to manually install the @code{gitman} info manual, or
-advice @code{Info-follow-nearest-node} to instead open the actual manpage.
-See @ref{How to install the gitman info manual?}.
+このマニュアルで見つかるgitのmanページへのクロスリファレンスをたどるには、@code{gitman}
+infoマニュアルを手動でインストールするか、代わりに実際のmanページを開くように@code{Info-follow-nearest-node}にadviceする必要があるかもしれません。@ref{How
+to install the gitman info manual?}を参照してください。
 
-If you are completely new to Magit then see @ref{Getting Started}.
+Magitが完全に初めての場合は、@ref{Getting Started}を参照してください。
 
-If you run into problems, then please see the @ref{FAQ}.  Also see the
-@ref{Debugging Tools}.
+問題が発生した場合は、@ref{FAQ}を参照してください。@ref{Debugging Tools}も参照してください。
 
-And last but not least please consider making a donation, to ensure that I
-can keep working on Magit.  See @uref{https://magit.vc/donations}.  for
-various donation options.
+最後に、Magitの開発を続けることができるようにするために、寄付を検討してください。さまざまな寄付オプションについては、@uref{https://magit.vc/donations}を参照してください。
 
 @node Getting Started
 @chapter Getting Started
 
-This short tutorial describes the most essential features that many
-Magitians use on a daily basis.  It only scratches the surface but should be
-enough to get you started.
+この短いチュートリアルでは、多くのMagitiansが日常的に使っている最も重要な機能について説明します。これは表面的なものに過ぎませんが、始めるのに十分です。
 
-IMPORTANT: It is safest if you clone some repository just for this
-tutorial.  Alternatively you can use an existing local repository, but if
-you do that, then you should commit all uncommitted changes before
-proceeding.
+重要:
+このチュートリアルのためにリポジトリをcloneするのが最も安全です。または、既存のローカルリポジトリを使用することもできますが、その場合は、続行する前にすべての未コミットの変更をコミットする必要があります。
 
-Type @code{C-x g} to display information about the current Git repository in
-a dedicated buffer, called the status buffer.
+status bufferと呼ばれる専用のバッファに、現在のGitリポジトリに関する情報を表示するには、@code{C-x g}をタイプします。
 
-Most Magit commands are commonly invoked from the status buffer.  It can be
-considered the primary interface for interacting with Git using Magit.  Many
-other Magit buffers may exist at a given time, but they are often created
-from this buffer.
+Magitのほとんどのコマンドは、status
+bufferから呼び出されます。これは、Magitを使ってGitとやり取りするための主要なインターフェースと考えることができます。ある時点で多くの他のMagitバッファが存在するかもしれませんが、それらはしばしばこのバッファから作成されます。
 
-Depending on what state your repository is in, this buffer may contain
-sections titled "Staged changes", "Unstaged changes", "Unmerged into
-origin/master", "Unpushed to origin/master", and many others.
+リポジトリの状態によっては、このバッファには、"Staged changes"、"Unstaged changes"、"Unmerged into
+origin/master"、"Unpushed to origin/master"などのセクションが含まれている場合があります。
 
-Since we are starting from a safe state, which you can easily return to (by
-doing a @code{git reset --hard PRE-MAGIT-STATE}), there currently are no
-staged or unstaged changes.  Edit some files and save the changes.  Then go
-back to the status buffer, while at the same time refreshing it, by typing
-@code{C-x g}.  (When the status buffer, or any Magit buffer for that matter,
-is the current buffer, then you can also use just @code{g} to refresh it).
+ステージされた変更やステージされていない変更がない安全な状態から始めるので、あなたは簡単に戻ることができます（@code{git reset
+--hard PRE-MAGIT-STATE}を実行することで）。いくつかのファイルを編集して変更を保存します。そして、@code{C-x
+g}をタイプして、status bufferに戻り、同時にそれを更新します。(status buffer、またはMagit
+bufferのどれでも、カレントバッファである場合は、@code{g}だけを使って更新することもできます。)
 
-Move between sections using @code{p} and @code{n}.  Note that the bodies of
-some sections are hidden.  Type @code{TAB} to expand or collapse the section
-at point.  You can also use @code{C-tab} to cycle the visibility of the
-current section and its children.  Move to a file section inside the section
-named "Unstaged changes" and type @code{s} to stage the changes you have
-made to that file.  That file now appears under "Staged changes".
+@code{p}と@code{n}を使ってセクション間を移動します。いくつかのセクションの本文が隠されていることに注意してください。ポイントのセクションを展開または折りたたむには、@code{TAB}をタイプします。また、@code{C-tab}を使って、現在のセクションとその子の可視性を切り替えることもできます。"Unstaged
+changes"という名前のセクション内のファイルセクションに移動し、@code{s}をタイプして、そのファイルに対して行った変更をステージします。そのファイルは、"Staged
+changes"の下に表示されます。
 
-Magit can stage and unstage individual hunks, not just complete files.  Move
-to the file you have just staged, expand it using @code{TAB}, move to one of
-the hunks using @code{n}, and unstage just that by typing @code{u}.  Note
-how the staging (@code{s}) and unstaging (@code{u}) commands operate on the
-change at point.  Many other commands behave the same way.
+Magitは、ファイル全体だけでなく、個々のhunkをstageおよびunstageすることができます。stageしたファイルに移動し、@code{TAB}を使って展開し、@code{n}を使ってhunkの1つに移動し、@code{u}をタイプして、それだけをunstageします。stage（@code{s}）とunstage（@code{u}）コマンドがポイントの変更に作用する方法に注意してください。多くの他のコマンドも同じように動作します。
 
-You can also un-/stage just part of a hunk.  Inside the body of a hunk
-section (move there using @code{C-n}), set the mark using @code{C-SPC} and
-move down until some added and/or removed lines fall inside the region but
-not all of them.  Again type @code{s} to stage.
+hunkセクションの本文の中（@code{C-n}を使って移動）で、@code{C-SPC}を使ってマークを設定し、追加された行と/または削除された行の一部が領域内に入るまで下に移動しますが、すべてではありません。再び@code{s}をタイプしてstageします。
 
-It is also possible to un-/stage multiple files at once.  Move to a file
-section, type @code{C-SPC}, move to the next file using @code{n}, and then
-@code{s} to stage both files.  Note that both the mark and point have to be
-on the headings of sibling sections for this to work.  If the region looks
-like it does in other buffers, then it doesn't select Magit sections that
-can be acted on as a unit.
+複数のファイルを一度にun-/stageすることもできます。ファイルセクションに移動し、@code{C-SPC}をタイプし、@code{n}を使って次のファイルに移動し、@code{s}をタイプし、両方のファイルをstageします。この機能を使用するには、マークとポイントの両方が、目次
 
 And then of course you want to commit your changes.  Type @code{c}.  This
 shows the available commit commands and arguments in a buffer at the bottom
@@ -808,7 +706,7 @@ is highly recommended that you read the next section too.
 * Transient Commands::
 * Transient Arguments and Buffer Variables::
 * Completion, Confirmation and the Selection: Completion Confirmation and the
-Selection.  
+Selection.
 * Mouse Support::
 * Running Git::              
 @end menu
@@ -2637,7 +2535,7 @@ the echo area.  Non-interactively this just returns the Magit version.
 The arguments set here are used every time the git executable is run as a
 subprocess.  They are placed right after the executable itself and before
 the git command - as in @code{git HERE... COMMAND REST}.  For valid
-arguments see 
+arguments see
 @ifinfo
 @ref{git,,,gitman,}.
 @end ifinfo
@@ -3311,7 +3209,7 @@ taken from those currently in use in the current repository's log buffer,
 depending on the value of @code{magit-prefix-use-buffer-arguments} (see
 @ref{Transient Arguments and Buffer Variables}).
 
-For information about the various arguments, see 
+For information about the various arguments, see
 @ifinfo
 @ref{git-log,,,gitman,}.
 @end ifinfo
@@ -3715,7 +3613,7 @@ then this specifies how much space is used to do so.
 @node Reflog
 @subsection Reflog
 
-Also see 
+Also see
 @ifinfo
 @ref{git-reflog,,,gitman,}.
 @end ifinfo
@@ -3787,7 +3685,7 @@ The command @code{magit-cherry} shows cherries for a single branch, but the
 references buffer (see @ref{References Buffer}) can show cherries for
 multiple "upstreams" at once.
 
-Also see 
+Also see
 @ifinfo
 @ref{git-reflog,,,gitman,}.
 @end ifinfo
@@ -3851,7 +3749,7 @@ repository's diff buffer, depending on the value of
 @code{magit-prefix-use-buffer-arguments} (see @ref{Transient Arguments and
 Buffer Variables}).
 
-Also see 
+Also see
 @ifinfo
 @ref{git-diff,,,gitman,}.
 @end ifinfo
@@ -4270,7 +4168,7 @@ This option specifies additional arguments to be used alongside
 The value is a list of zero or more arguments or a function that takes no
 argument and returns such a list.  These arguments are allowed here:
 @code{--stat-width}, @code{--stat-name-width}, @code{--stat-graph-width} and
-@code{--compact-summary}.  Also see 
+@code{--compact-summary}.  Also see
 @ifinfo
 @ref{git-diff,,,gitman,}.
 @end ifinfo
@@ -4822,7 +4720,7 @@ Insert sections showing all tags.
 @node Bisecting
 @section Bisecting
 
-Also see 
+Also see
 @ifinfo
 @ref{git-bisect,,,gitman,}.
 @end ifinfo
@@ -5033,7 +4931,7 @@ also use another window when invoked with a prefix argument.
 @node Blaming
 @section Blaming
 
-Also see 
+Also see
 @ifinfo
 @ref{git-blame,,,gitman,}.
 @end ifinfo
@@ -5696,7 +5594,7 @@ file's content as message.
 @node Initiating a Commit
 @subsection Initiating a Commit
 
-Also see 
+Also see
 @ifinfo
 @ref{git-commit,,,gitman,}.
 @end ifinfo
@@ -6679,7 +6577,7 @@ manpage.
 @iftex
 the git-config(1) manpage.
 @end iftex
- Also see 
+ Also see
 @ifinfo
 @ref{git-branch,,,gitman,}.
 @end ifinfo
@@ -6691,7 +6589,7 @@ manpage.
 @iftex
 the git-branch(1) manpage.
 @end iftex
-, 
+,
 @ifinfo
 @ref{git-checkout,,,gitman,}.
 @end ifinfo
@@ -6742,7 +6640,7 @@ reference had a reflog, then that is restored as the reflog of the branch.
 @node Merging
 @section Merging
 
-Also see 
+Also see
 @ifinfo
 @ref{git-merge,,,gitman,}.
 @end ifinfo
@@ -6981,7 +6879,7 @@ conflicts, the latter is usually overkill.
 @node Rebasing
 @section Rebasing
 
-Also see 
+Also see
 @ifinfo
 @ref{git-rebase,,,gitman,}.
 @end ifinfo
@@ -7505,7 +7403,7 @@ been applied.
 @node Cherry Picking
 @section Cherry Picking
 
-Also see 
+Also see
 @ifinfo
 @ref{git-cherry-pick,,,gitman,}.
 @end ifinfo
@@ -7687,7 +7585,7 @@ made since the sequence started.
 @node Resetting
 @section Resetting
 
-Also see 
+Also see
 @ifinfo
 @ref{git-reset,,,gitman,}.
 @end ifinfo
@@ -7757,7 +7655,7 @@ Both the revision and file are read from the user.
 @node Stashing
 @section Stashing
 
-Also see 
+Also see
 @ifinfo
 @ref{git-stash,,,gitman,}.
 @end ifinfo
@@ -7973,7 +7871,7 @@ to make changes to existing remotes.  This command only deals with remotes
 themselves, not with branches or the transfer of commits.  Those features
 are available from separate transient commands.
 
-Also see 
+Also see
 @ifinfo
 @ref{git-remote,,,gitman,}.
 @end ifinfo
@@ -8126,7 +8024,7 @@ are fetched that are reachable from fetched branches.
 @node Fetching
 @section Fetching
 
-Also see 
+Also see
 @ifinfo
 @ref{git-fetch,,,gitman,}.
 @end ifinfo
@@ -8218,7 +8116,7 @@ prefix commands, e.g.:
 @node Pulling
 @section Pulling
 
-Also see 
+Also see
 @ifinfo
 @ref{git-pull,,,gitman,}.
 @end ifinfo
@@ -8265,7 +8163,7 @@ This command pulls from a branch read in the minibuffer.
 @node Pushing
 @section Pushing
 
-Also see 
+Also see
 @ifinfo
 @ref{git-push,,,gitman,}.
 @end ifinfo
@@ -8434,7 +8332,7 @@ inside a @code{magit-diff-mode} or @code{magit-revision-mode} buffer.
 @node Maildir Patches
 @section Maildir Patches
 
-Also see 
+Also see
 @ifinfo
 @ref{git-am,,,gitman,}.
 @end ifinfo
@@ -8445,7 +8343,7 @@ Also see
 @iftex
 the git-am(1) manpage.
 @end iftex
- and 
+ and
 @ifinfo
 @ref{git-apply,,,gitman,}.
 @end ifinfo
@@ -8527,7 +8425,7 @@ changes made since the sequence started.
 @node Tagging
 @section Tagging
 
-Also see 
+Also see
 @ifinfo
 @ref{git-tag,,,gitman,}.
 @end ifinfo
@@ -8590,7 +8488,7 @@ versa.
 @node Notes
 @section Notes
 
-Also see 
+Also see
 @ifinfo
 @ref{git-notes,,,gitman,}.
 @end ifinfo
@@ -8680,7 +8578,7 @@ namespace (or @code{**} if some names contain slashes).
 @node Submodules
 @section Submodules
 
-Also see 
+Also see
 @ifinfo
 @ref{git-submodule,,,gitman,}.
 @end ifinfo
@@ -8818,7 +8716,7 @@ fetch all remotes.
 @node Subtree
 @section Subtree
 
-Also see 
+Also see
 @ifinfo
 @ref{git-subtree,,,gitman,}.
 @end ifinfo
@@ -8899,7 +8797,7 @@ This command extracts the history of the subtree PREFIX@.
 @node Worktree
 @section Worktree
 
-Also see 
+Also see
 @ifinfo
 @ref{git-worktree,,,gitman,}.
 @end ifinfo
@@ -8954,7 +8852,7 @@ current buffer, then show it in Dired instead.
 @section Sparse checkouts
 
 Sparse checkouts provide a way to restrict the working tree to a subset of
-directories.  See 
+directories.  See
 @ifinfo
 @ref{git-sparse-checkout,,,gitman,}.
 @end ifinfo
@@ -9036,7 +8934,7 @@ add the function @code{magit-sparse-checkout-insert-header} to
 @node Bundle
 @section Bundle
 
-Also see 
+Also see
 @ifinfo
 @ref{git-bundle,,,gitman,}.
 @end ifinfo
@@ -9726,7 +9624,7 @@ as well as Emacs options.
 
 To set a Git variable for one repository only, simply set it in
 @code{/path/to/repo/.git/config} instead of @code{$HOME/.gitconfig} or
-@code{/etc/gitconfig}.  See 
+@code{/etc/gitconfig}.  See
 @ifinfo
 @ref{git-config,,,gitman,}.
 @end ifinfo
@@ -10980,7 +10878,7 @@ of @code{vc-handled-backends}.
 * I am having problems committing::
 * I am using MS Windows and cannot push with Magit::
 * I am using macOS and SOMETHING works in shell, but not in Magit: I am using
-macOS and SOMETHING works in shell but not in Magit.  
+macOS and SOMETHING works in shell but not in Magit.
 * Expanding a file to show the diff causes it to disappear::
 * Point is wrong in the @code{COMMIT_EDITMSG} buffer::
 * The mode-line information isn't always up-to-date::

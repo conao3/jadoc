@@ -90,7 +90,7 @@ Interface Concepts
 * Sections::
 * Transient Commands::
 * Transient Arguments and Buffer Variables::
-* Completion, Confirmation and the Selection: Completion Confirmation and the Selection. 
+* Completion, Confirmation and the Selection: Completion Confirmation and the Selection.
 * Mouse Support::
 * Running Git::
 
@@ -325,7 +325,7 @@ FAQ - Issues and Errors
 * I changed several thousand files at once and now Magit is unusable::
 * I am having problems committing::
 * I am using MS Windows and cannot push with Magit::
-* I am using macOS and SOMETHING works in shell, but not in Magit: I am using macOS and SOMETHING works in shell but not in Magit. 
+* I am using macOS and SOMETHING works in shell, but not in Magit: I am using macOS and SOMETHING works in shell but not in Magit.
 * Expanding a file to show the diff causes it to disappear::
 * Point is wrong in the @code{COMMIT_EDITMSG} buffer::
 * The mode-line information isn't always up-to-date::
@@ -711,7 +711,7 @@ then it is highly recommended that you read the next section too.
 * Sections::
 * Transient Commands::
 * Transient Arguments and Buffer Variables::
-* Completion, Confirmation and the Selection: Completion Confirmation and the Selection. 
+* Completion, Confirmation and the Selection: Completion Confirmation and the Selection.
 * Mouse Support::
 * Running Git::
 @end menu
@@ -2589,7 +2589,7 @@ Magit version.
 The arguments set here are used every time the git executable is run
 as a subprocess.  They are placed right after the executable itself
 and before the git command - as in @code{git HERE... COMMAND REST}.  For
-valid arguments see 
+valid arguments see
 @ifinfo
 @ref{git,,,gitman,}.
 @end ifinfo
@@ -3283,7 +3283,7 @@ may be taken from those currently in use in the current repository's
 log buffer, depending on the value of @code{magit-prefix-use-buffer-arguments}
 (see @ref{Transient Arguments and Buffer Variables}).
 
-For information about the various arguments, see 
+For information about the various arguments, see
 @ifinfo
 @ref{git-log,,,gitman,}.
 @end ifinfo
@@ -3700,7 +3700,7 @@ is shown, then this specifies how much space is used to do so.
 @node Reflog
 @subsection Reflog
 
-Also see 
+Also see
 @ifinfo
 @ref{git-reflog,,,gitman,}.
 @end ifinfo
@@ -3773,7 +3773,7 @@ The command @code{magit-cherry} shows cherries for a single branch, but the
 references buffer (see @ref{References Buffer}) can show cherries for
 multiple "upstreams" at once.
 
-Also see 
+Also see
 @ifinfo
 @ref{git-reflog,,,gitman,}.
 @end ifinfo
@@ -3837,7 +3837,7 @@ be taken from those currently in use in the current repository's diff
 buffer, depending on the value of @code{magit-prefix-use-buffer-arguments}
 (see @ref{Transient Arguments and Buffer Variables}).
 
-Also see 
+Also see
 @ifinfo
 @ref{git-diff,,,gitman,}.
 @end ifinfo
@@ -4264,7 +4264,7 @@ This option specifies additional arguments to be used alongside
 The value is a list of zero or more arguments or a function that
 takes no argument and returns such a list.  These arguments are
 allowed here: @code{--stat-width}, @code{--stat-name-width},
-@code{--stat-graph-width} and @code{--compact-summary}.  Also see 
+@code{--stat-graph-width} and @code{--compact-summary}.  Also see
 @ifinfo
 @ref{git-diff,,,gitman,}.
 @end ifinfo
@@ -4828,7 +4828,7 @@ Insert sections showing all tags.
 @node Bisecting
 @section Bisecting
 
-Also see 
+Also see
 @ifinfo
 @ref{git-bisect,,,gitman,}.
 @end ifinfo
@@ -5049,7 +5049,7 @@ argument.
 @node Blaming
 @section Blaming
 
-Also see 
+Also see
 @ifinfo
 @ref{git-blame,,,gitman,}.
 @end ifinfo
@@ -5717,7 +5717,7 @@ commit using the file's content as message.
 @node Initiating a Commit
 @subsection Initiating a Commit
 
-Also see 
+Also see
 @ifinfo
 @ref{git-commit,,,gitman,}.
 @end ifinfo
@@ -6724,7 +6724,7 @@ the <a href="http://git-scm.com/docs/git-config">git-config(1)</a> manpage.
 @iftex
 the git-config(1) manpage.
 @end iftex
- Also see 
+ Also see
 @ifinfo
 @ref{git-branch,,,gitman,}.
 @end ifinfo
@@ -6736,7 +6736,7 @@ the <a href="http://git-scm.com/docs/git-branch">git-branch(1)</a> manpage.
 @iftex
 the git-branch(1) manpage.
 @end iftex
-, 
+,
 @ifinfo
 @ref{git-checkout,,,gitman,}.
 @end ifinfo
@@ -6789,7 +6789,7 @@ the reflog of the branch.
 @node Merging
 @section Merging
 
-Also see 
+Also see
 @ifinfo
 @ref{git-merge,,,gitman,}.
 @end ifinfo
@@ -7033,7 +7033,7 @@ truly complex conflicts, the latter is usually overkill.
 @node Rebasing
 @section Rebasing
 
-Also see 
+Also see
 @ifinfo
 @ref{git-rebase,,,gitman,}.
 @end ifinfo
@@ -7569,7 +7569,7 @@ commits which have already been applied.
 @node Cherry Picking
 @section Cherry Picking
 
-Also see 
+Also see
 @ifinfo
 @ref{git-cherry-pick,,,gitman,}.
 @end ifinfo
@@ -7756,7 +7756,7 @@ changes made since the sequence started.
 @node Resetting
 @section Resetting
 
-Also see 
+Also see
 @ifinfo
 @ref{git-reset,,,gitman,}.
 @end ifinfo
@@ -7828,7 +7828,7 @@ revision.  Both the revision and file are read from the user.
 @node Stashing
 @section Stashing
 
-Also see 
+Also see
 @ifinfo
 @ref{git-stash,,,gitman,}.
 @end ifinfo
@@ -8048,7 +8048,7 @@ to make changes to existing remotes.  This command only deals with
 remotes themselves, not with branches or the transfer of commits.
 Those features are available from separate transient commands.
 
-Also see 
+Also see
 @ifinfo
 @ref{git-remote,,,gitman,}.
 @end ifinfo
@@ -8203,7 +8203,7 @@ then only tags are fetched that are reachable from fetched branches.
 @node Fetching
 @section Fetching
 
-Also see 
+Also see
 @ifinfo
 @ref{git-fetch,,,gitman,}.
 @end ifinfo
@@ -8296,7 +8296,7 @@ for these prefix commands, e.g.:
 @node Pulling
 @section Pulling
 
-Also see 
+Also see
 @ifinfo
 @ref{git-pull,,,gitman,}.
 @end ifinfo
@@ -8345,7 +8345,7 @@ This command pulls from a branch read in the minibuffer.
 @node Pushing
 @section Pushing
 
-Also see 
+Also see
 @ifinfo
 @ref{git-push,,,gitman,}.
 @end ifinfo
@@ -8522,7 +8522,7 @@ a @code{magit-diff-mode} or @code{magit-revision-mode} buffer.
 @node Maildir Patches
 @section Maildir Patches
 
-Also see 
+Also see
 @ifinfo
 @ref{git-am,,,gitman,}.
 @end ifinfo
@@ -8534,7 +8534,7 @@ the <a href="http://git-scm.com/docs/git-am">git-am(1)</a> manpage.
 @iftex
 the git-am(1) manpage.
 @end iftex
- and 
+ and
 @ifinfo
 @ref{git-apply,,,gitman,}.
 @end ifinfo
@@ -8618,7 +8618,7 @@ discards all changes made since the sequence started.
 @node Tagging
 @section Tagging
 
-Also see 
+Also see
 @ifinfo
 @ref{git-tag,,,gitman,}.
 @end ifinfo
@@ -8684,7 +8684,7 @@ vice versa.
 @node Notes
 @section Notes
 
-Also see 
+Also see
 @ifinfo
 @ref{git-notes,,,gitman,}.
 @end ifinfo
@@ -8777,7 +8777,7 @@ multiple values and may end with @code{*} to display all refs in the
 @node Submodules
 @section Submodules
 
-Also see 
+Also see
 @ifinfo
 @ref{git-submodule,,,gitman,}.
 @end ifinfo
@@ -8917,7 +8917,7 @@ fetch all remotes.
 @node Subtree
 @section Subtree
 
-Also see 
+Also see
 @ifinfo
 @ref{git-subtree,,,gitman,}.
 @end ifinfo
@@ -8998,7 +8998,7 @@ This command extracts the history of the subtree PREFIX@.
 @node Worktree
 @section Worktree
 
-Also see 
+Also see
 @ifinfo
 @ref{git-worktree,,,gitman,}.
 @end ifinfo
@@ -9053,7 +9053,7 @@ displayed in the current buffer, then show it in Dired instead.
 @section Sparse checkouts
 
 Sparse checkouts provide a way to restrict the working tree to a
-subset of directories.  See 
+subset of directories.  See
 @ifinfo
 @ref{git-sparse-checkout,,,gitman,}.
 @end ifinfo
@@ -9135,7 +9135,7 @@ enabled, add the function @code{magit-sparse-checkout-insert-header} to
 @node Bundle
 @section Bundle
 
-Also see 
+Also see
 @ifinfo
 @ref{git-bundle,,,gitman,}.
 @end ifinfo
@@ -9838,7 +9838,7 @@ variables as well as Emacs options.
 
 To set a Git variable for one repository only, simply set it in
 @code{/path/to/repo/.git/config} instead of @code{$HOME/.gitconfig} or
-@code{/etc/gitconfig}.  See 
+@code{/etc/gitconfig}.  See
 @ifinfo
 @ref{git-config,,,gitman,}.
 @end ifinfo
@@ -11127,7 +11127,7 @@ the value of @code{vc-handled-backends}.
 * I changed several thousand files at once and now Magit is unusable::
 * I am having problems committing::
 * I am using MS Windows and cannot push with Magit::
-* I am using macOS and SOMETHING works in shell, but not in Magit: I am using macOS and SOMETHING works in shell but not in Magit. 
+* I am using macOS and SOMETHING works in shell, but not in Magit: I am using macOS and SOMETHING works in shell but not in Magit.
 * Expanding a file to show the diff causes it to disappear::
 * Point is wrong in the @code{COMMIT_EDITMSG} buffer::
 * The mode-line information isn't always up-to-date::
