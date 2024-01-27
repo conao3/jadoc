@@ -150,9 +150,8 @@ msgid ""
 "that Magit uses this library extensively and search its source for suitable "
 "examples before asking me for help.  Thanks!"
 msgstr ""
-"ドキュメントに何かを残しておくときは、Magitがこのライブラリを広範囲に使用して"
-"いることを考慮して、適切な例を探してから、ヘルプを求める前に私に尋ねてくださ"
-"い。"
+"ドキュメントが足りていない場合は、Magitがこのライブラリを広範囲に使用している"
+"ことを考慮して、適切な例をそのソースから探してからヘルプを求めてください。"
 
 #. type: subsection
 #: orig/magit-section.texi:85 orig/magit-section.texi:86 orig/magit.texi:10537
