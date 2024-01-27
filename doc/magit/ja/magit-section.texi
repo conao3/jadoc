@@ -1,0 +1,213 @@
+\input texinfo    @c -*- texinfo -*-
+@c ===========================================================================
+@c
+@c This file was generated with po4a. Translate the source file.
+@c
+@c ===========================================================================
+
+@c %**start of header
+@setfilename magit-section.info
+@settitle Magit-Section Developer Manual
+@c %**end of header
+@documentencoding UTF-8 @documentlanguage en
+
+@copying
+@quotation
+Copyright (C) 2015-2024 Jonas Bernoulli <jonas@@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms of the
+GNU General Public License as published by the Free Software Foundation,
+either version 3 of the License, or (at your option) any later version.
+
+This document is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE@.  See the GNU General Public License for
+more details.
+
+@end quotation
+@end copying
+
+@dircategory Emacs
+@direntry
+* Magit-Section: (magit-section).  Use Magit sections in your own packages.
+@end direntry
+
+@finalout
+@titlepage
+@title Magit-Section Developer Manual
+@subtitle for version 3.3.0.50-git
+@author Jonas Bernoulli
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+
+@contents
+
+@ifnottex
+@node Top
+@top Magit-Section Developer Manual
+
+このパッケージは、Magitのメインユーザーインターフェイスである折りたたみ可能なセクションを実装します。このパッケージは、Magitの一部として配布されていましたが、MagitやGitとは何の関係もない他のパッケージでも使用できるようになりました。
+
+セクションの抽象化と利用可能なコマンドとユーザーオプションについては、@ref{Sections,,,magit,}を参照してください。このマニュアルでは、セクションを独自のパッケージで使用する方法について説明します。
+
+@noindent
+This manual is for Magit-Section version 3.3.0.50-git.
+
+@insertcopying
+@end ifnottex
+
+@menu
+* Introduction::
+* Creating Sections::
+* Core Functions::
+* Matching Functions::       
+@end menu
+
+@node Introduction
+@chapter Introduction
+
+このパッケージは、Magitのメインユーザーインターフェイスである折りたたみ可能なセクションを実装します。このパッケージは、Magitの一部として配布されていましたが、MagitやGitとは何の関係もない他のパッケージでも使用できるようになりました。
+
+セクションの抽象化と利用可能なコマンドとユーザーオプションについては、@ref{Sections,,,magit,}を参照してください。このマニュアルでは、セクションを独自のパッケージで使用する方法について説明します。
+
+ドキュメントに何かを残しておくときは、Magitがこのライブラリを広範囲に使用していることを考慮して、適切な例を探してから、ヘルプを求める前に私に尋ねてください。
+
+@node Creating Sections
+@chapter Creating Sections
+
+@defmac magit-insert-section [name] (type &optional value hide) &rest body
+CLASS型のセクションオブジェクトを作成し、VALUEをその@code{value}スロットに保存し、セクションをポイントに挿入します。CLASSは
+`magit-section' のサブクラスであるか、@code{(eval
+FORM)}の形式である必要があります。その場合はFORMが実行時に評価されるため、サブクラスを返す必要があります。他の場所では、セクションのクラスはしばしば「タイプ」と呼ばれます。
+
+多くのコマンドは、現在のセクションのクラスによって異なる動作をします。また、特定のクラスのセクションには、そのクラスのキーマップを持つことができます。キーマップは、`keymap'クラススロットを使用して指定されます。そのスロットの値は、キーマップの値である変数である必要があります。
+
+歴史的な理由から、MagitとForgeは、実際にはクラスを識別せず、適切なパッケージ接頭辞がないシンボルをCLASSとして使用しています。これは、いくつかの未公開のクラッジによって動作しますが、他のパッケージでは使用できません。
+
+オプションのHIDEがnon-nilの場合、セクションの本文をデフォルトで折りたたみます。つまり、セクションを最初に作成するときは折りたたみますが、バッファを更新するときは折りたたみません。それ以外の場合は、デフォルトで展開します。これは、@code{magit-section-set-visibility-hook}を使用して上書きできます。セクションが更新中に再作成されると、前のセクションの可視性が継承され、HIDEは無視されます（フックは引き続き有効です）。
+
+BODYは、セクションの見出しと本文を実際に挿入する任意の数のフォームです。オプションのNAMEは、指定されている場合、セクションを挿入するオブジェクトにバインドされるシンボルである必要があります。
+
+BODYが評価される前に、セクションオブジェクトの@code{start}は`point'の値に設定され、BODYが評価された後に@code{end}が@code{point}の新しい値に設定されます。BODYは、@code{point}を前方に移動する責任があります。
+
+BODYの中でセクションが空であることがわかった場合、@code{magit-cancel-section}を使用して、部分的に挿入されたセクションのすべての痕跡を中止して削除できます。これは、Gitの出力を洗浄してセクションを作成し、今回はGitが実際に何も出力しなかった場合に発生する可能性があります。
+@end defmac
+
+@defun magit-insert-heading &rest args
+現在挿入中のセクションの見出しを挿入します。
+
+この関数は、@code{magit-insert-section}の内部でのみ使用する必要があります。
+
+引数なしで呼び出された場合、挿入されているセクションを表すオブジェクトの@code{content}スロットを、@code{point}のマーカーに設定します。この関数がこのように使用されるとき、セクションには1行しか含まれていない必要があります。
+
+文字列またはnilである必要がある引数ARGSで呼び出された場合、それらの文字列をポイントに挿入します。この操作が行われる前にセクションにテキストが含まれていない必要があり、その後も1行しか含まれていない必要があります。これらの文字列のいずれかの内部で@code{face}プロパティが設定されている場合、すべての文字列を変更せずに挿入します。それ以外の場合は、すべての挿入されたテキストに`magit-section-heading'フェイスを使用します。
+
+セクションオブジェクトの@code{content}プロパティは、見出しの終わり（@code{start}から@code{content}まで）と本文の始まり（@code{content}から@code{end}まで）です。@code{content}の値がnilの場合、セクションには見出しがなく、その本文を折りたたむことはできません。セクションに見出しがある場合、その高さは、改行文字を含む1行になります。これは強制されません。正しく取得する責任があります。唯一の例外は、この関数が必要に応じて改行文字を挿入することです。
+@end defun
+
+@defmac magit-insert-section-body &rest body
+セクションが展開されると、BODYを使用してセクション本文を挿入します。セクションが作成されたときにセクションが展開されている場合、これは@code{progn}のようです。それ以外の場合、BODYはセクションが明示的に展開されるまで評価されません。
+@end defmac
+
+@defun magit-cancel-section
+現在挿入中のセクションの挿入をキャンセルします。そのセクションのすべての痕跡を削除します。
+@end defun
+
+@defun magit-wash-sequence function
+FUNCTIONが@code{nil}を返すか、バッファの終わりに達するまで、FUNCTIONを繰り返し呼び出します。FUNCTIONは、ポイントを前方に移動するか、@code{nil}を返す必要があります。
+@end defun
+
+@node Core Functions
+@chapter Core Functions
+
+@defun magit-current-section
+ポイントまたはコンテキストメニューが呼び出された場所にあるセクションを返します。コンテキストメニューを使用すると、現在のバッファがクリックが発生したバッファである場合に、ユーザーがクリックしたセクションを返します。それ以外の場合は、ポイントのセクションを返します。
+@end defun
+
+@table @asis
+@item Function magit-section-at &optional position
+POSITIONのセクションを返します。デフォルトはポイントです。コンテキストメニューを使用している場合でも、デフォルトはポイントになります。
+@end table
+
+@defun magit-section-ident section
+セクションの一意の識別子を返します。戻り値の形式は@code{((TYPE . VALUE) ...)}です。
+@end defun
+
+@defun magit-section-ident-value value
+Return a constant representation of VALUE@.
+
+VALUEは、@code{magit-section}オブジェクトの値です。それがオブジェクト自体である場合、同じものを表していても等しくない可能性があるため、セクションを識別するためには適していません。可能な場合は、そのようなオブジェクトに対してメソッドを追加し、等しい値を返す必要があります。それ以外の場合は、キャッチオールメソッドが使用され、引数自体が返されます。
+@end defun
+
+@defun magit-get-section ident &optional root
+IDENTで識別されるセクションを返します。IDENTは、@code{magit-section-ident}によって返されるリストである必要があります。オプションのROOTがnon-nilの場合、そのセクションツリーではなく、@code{magit-root-section}のルートで検索します。
+@end defun
+
+@defun magit-section-lineage section
+セクションの血統を返します。戻り値の形式は@code{(TYPE ...)}です。
+@end defun
+
+@defun magit-section-content-p section
+SECTIONにコンテンツまたは未使用のwasher関数がある場合はnon-nilを返します。
+@end defun
+
+次の2つの関数は、@code{magit-}接頭辞を除いて同じ名前を持つEmacs関数の代替です。@code{magit-current-section}のように、これらの関数はポイント、カーソルの位置ではなく、コンテキストメニューを呼び出すためにユーザーがクリックした位置で動作します。
+
+パッケージがコンテキストメニューを提供し、そのコマンドのいくつかが「ポイントのもの」に作用する場合、デフォルトとして使用する場合でも、適切な場合は代わりにクリック位置を使用するように、プレフィックス付きの関数を使用してそれらを教えます。
+
+@table @asis
+@item Function magit-point
+ポイントまたはコンテキストメニューが呼び出された位置を返します。コンテキストメニューを使用すると、現在のバッファがクリックが発生したバッファである場合に、ユーザーがクリックした位置を返します。それ以外の場合は、@code{point}と同じ値を返します。
+
+@item Function magit-thing-at-point thing &optional no-properties
+ポイントまたはコンテキストメニューが呼び出された場所のTHINGを返します。コンテキストメニューを使用すると、現在のバッファがクリックが発生したバッファである場合に、ユーザーがクリックしたものを返します。それ以外の場合は、@code{thing-at-point}と同じ値を返します。THINGとNO-PROPERTIESの意味については、その関数を参照してください。
+@end table
+
+@node Matching Functions
+@chapter Matching Functions
+
+@defun magit-section-match condition &optional (section (magit-current-section))
+Return t if SECTION matches CONDITION@.
+
+SECTIONのデフォルトはポイントのセクションです。SECTIONが指定されていない場合、ポイントにセクションがない場合は、nilを返します。
+
+CONDITION can take the following forms:
+
+@itemize
+@item
+@code{(CONDITION...)} matches if any of the CONDITIONs matches.
+@item
+@code{[CLASS
+...]}は、セクションのクラスが最初のCLASSと同じか、そのサブクラスである場合に一致します。セクションの親クラスは2番目のCLASSに一致し、以降も同様です。
+
+@item
+@code{[* CLASS ...]}は、[CLASS@dots{}]に一致するセクションと、再帰的にすべての子セクションに一致します。
+@item
+@code{CLASS}は、セクションのクラスがCLASSと同じか、そのサブクラスである場合に一致します。親セクションのクラスに関係なく。
+@end itemize
+
+各CLASSは、@code{magit-section}から派生したクラスを識別するクラスシンボルである必要があります。後方互換性のために、CLASSは「タイプシンボル」であることもできます。セクションは、そのシンボルの@code{type}スロットの値が@code{eq}である場合に、そのようなシンボルに一致します。タイプシンボルに@code{magit--section-type-alist}のエントリがある場合、セクションは、そのエントリに従ってタイプに対応するクラスのサブクラスである場合にも一致します。
+
+もちろん、正確にしたい場合を除いて、@code{magit-describe-section-briefly}で印刷されるセクションの血統を完全に指定する必要はありません。
+@end defun
+
+@defun magit-section-value-if condition &optional section
+If the section at point matches CONDITION, then return its value.
+
+オプションのSECTIONがnon-nilの場合、代わりにそれが一致するかどうかをテストします。ポイントにセクションがなく、SECTIONがnilの場合はnilを返します。セクションが一致しない場合は、nilを返します。
+
+See @code{magit-section-match} for the forms CONDITION can take.
+@end defun
+
+@defmac magit-section-case &rest clauses
+ポイントのセクションのタイプに応じて節を選択します。
+
+各節は@code{(CONDITION BODY
+...)}のようになります。セクションのタイプは、各CONDITIONと比較されます。最初に一致したBODYフォームが順次評価され、最後のフォームの値が返されます。BODYの内部では、シンボル@code{it}はポイントのセクションにバインドされます。節が成功しない場合、またはポイントにセクションがない場合は、nilを返します。
+
+CONDITIONが取ることができるフォームについては、@code{magit-section-match}を参照してください。さらに、最後の節ではtのCONDITIONが許可されており、他のCONDITIONが一致しなくても、ポイントにセクションがなくても一致します。
+@end defmac
+
+@bye
