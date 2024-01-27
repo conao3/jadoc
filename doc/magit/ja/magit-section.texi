@@ -9,8 +9,7 @@
 @setfilename magit-section.info
 @settitle Magit-Section Developer Manual
 @c %**end of header
-@documentencoding UTF-8
-@documentlanguage en
+@documentencoding UTF-8 @documentlanguage en
 
 @copying
 @quotation
@@ -63,7 +62,7 @@ This manual is for Magit-Section version 3.3.0.50-git.
 * Introduction::
 * Creating Sections::
 * Core Functions::
-* Matching Functions::
+* Matching Functions::       
 @end menu
 
 @node Introduction
