@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-01-27 16:20+0900\n"
+"POT-Creation-Date: 2024-01-27 17:27+0900\n"
 "PO-Revision-Date: 2024-01-27 16:20+0900\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -93,8 +93,10 @@ msgid ""
 "part of Magit but how it can also be used by other packages that have "
 "nothing to do with Magit or Git."
 msgstr ""
-"このパッケージは、Magitのメインユーザーインターフェイスである折りたたみ可能なセクションを実装します。"
-"このパッケージは、Magitの一部として配布されていましたが、MagitやGitとは何の関係もない他のパッケージでも使用できるようになりました。"
+"このパッケージは、Magitのメインユーザーインターフェイスである折りたたみ可能な"
+"セクションを実装します。このパッケージは、Magitの一部として配布されていました"
+"が、MagitやGitとは何の関係もない他のパッケージでも使用できるようになりまし"
+"た。"
 
 #. type: Plain text
 #: orig/magit-section.texi:55 orig/magit-section.texi:80
@@ -103,8 +105,9 @@ msgid ""
 "options see @ref{Sections,,,magit,}.  This manual documents how you can use "
 "sections in your own packages."
 msgstr ""
-"セクションの抽象化と利用可能なコマンドとユーザーオプションについては、@ref{Sections,,,magit,}を参照してください。"
-"このマニュアルでは、セクションを独自のパッケージで使用する方法について説明します。"
+"セクションの抽象化と利用可能なコマンドとユーザーオプションについては、"
+"@ref{Sections,,,magit,}を参照してください。このマニュアルでは、セクションを独"
+"自のパッケージで使用する方法について説明します。"
 
 #. type: ifnottex
 #: orig/magit-section.texi:58
@@ -146,7 +149,9 @@ msgid ""
 "that Magit uses this library extensively and search its source for suitable "
 "examples before asking me for help.  Thanks!"
 msgstr ""
-"ドキュメントに何かを残しておくときは、Magitがこのライブラリを広範囲に使用していることを考慮して、適切な例を探してから、ヘルプを求める前に私に尋ねてください。"
+"ドキュメントに何かを残しておくときは、Magitがこのライブラリを広範囲に使用して"
+"いることを考慮して、適切な例を探してから、ヘルプを求める前に私に尋ねてくださ"
+"い。"
 
 #. type: chapter
 #: orig/magit-section.texi:85 orig/magit-section.texi:86
@@ -169,9 +174,11 @@ msgid ""
 "at runtime and should return a subclass.  In other places a sections class "
 "is often referred to as its \"type\"."
 msgstr ""
-"CLASS型のセクションオブジェクトを作成し、VALUEをその@code{value}スロットに保存し、セクションをポイントに挿入します。"
-"CLASSは `magit-section' のサブクラスであるか、@code{(eval FORM)}の形式である必要があります。その場合はFORMが実行時に評価されるため、サブクラスを返す必要があります。"
-"他の場所では、セクションのクラスはしばしば「タイプ」と呼ばれます。"
+"CLASS型のセクションオブジェクトを作成し、VALUEをその@code{value}スロットに保"
+"存し、セクションをポイントに挿入します。CLASSは `magit-section' のサブクラス"
+"であるか、@code{(eval FORM)}の形式である必要があります。その場合はFORMが実行"
+"時に評価されるため、サブクラスを返す必要があります。他の場所では、セクション"
+"のクラスはしばしば「タイプ」と呼ばれます。"
 
 #. type: defmac
 #: orig/magit-section.texi:101
@@ -181,10 +188,10 @@ msgid ""
 "specified using the `keymap' class slot.  The value of that slot should be a "
 "variable whose value is a keymap."
 msgstr ""
-"多くのコマンドは、現在のセクションのクラスによって異なる動作をします。"
-"また、特定のクラスのセクションには、そのクラスのキーマップを持つことができます。"
-"キーマップは、`keymap'クラススロットを使用して指定されます。"
-"そのスロットの値は、キーマップの値である変数である必要があります。"
+"多くのコマンドは、現在のセクションのクラスによって異なる動作をします。また、"
+"特定のクラスのセクションには、そのクラスのキーマップを持つことができます。"
+"キーマップは、`keymap'クラススロットを使用して指定されます。そのスロットの値"
+"は、キーマップの値である変数である必要があります。"
 
 #. type: defmac
 #: orig/magit-section.texi:106
@@ -194,8 +201,9 @@ msgid ""
 "prefix.  This works due to some undocumented kludges, which are not "
 "available to other packages."
 msgstr ""
-"歴史的な理由から、MagitとForgeは、実際にはクラスを識別せず、適切なパッケージ接頭辞がないシンボルをCLASSとして使用しています。"
-"これは、いくつかの未公開のクラッジによって動作しますが、他のパッケージでは使用できません。"
+"歴史的な理由から、MagitとForgeは、実際にはクラスを識別せず、適切なパッケージ"
+"接頭辞がないシンボルをCLASSとして使用しています。これは、いくつかの未公開のク"
+"ラッジによって動作しますが、他のパッケージでは使用できません。"
 
 #. type: defmac
 #: orig/magit-section.texi:114
@@ -207,11 +215,12 @@ msgid ""
 "visibility of predecessor is inherited and HIDE is ignored (but the hook is "
 "still honored)."
 msgstr ""
-"オプションのHIDEがnon-nilの場合、セクションの本文をデフォルトで折りたたみます。"
-"つまり、セクションを最初に作成するときは折りたたみますが、バッファを更新するときは折りたたみません。"
-"それ以外の場合は、デフォルトで展開します。"
-"これは、@code{magit-section-set-visibility-hook}を使用して上書きできます。"
-"セクションが更新中に再作成されると、前のセクションの可視性が継承され、HIDEは無視されます（フックは引き続き有効です）。"
+"オプションのHIDEがnon-nilの場合、セクションの本文をデフォルトで折りたたみま"
+"す。つまり、セクションを最初に作成するときは折りたたみますが、バッファを更新"
+"するときは折りたたみません。それ以外の場合は、デフォルトで展開します。これ"
+"は、@code{magit-section-set-visibility-hook}を使用して上書きできます。セク"
+"ションが更新中に再作成されると、前のセクションの可視性が継承され、HIDEは無視"
+"されます（フックは引き続き有効です）。"
 
 #. type: defmac
 #: orig/magit-section.texi:119
@@ -220,8 +229,9 @@ msgid ""
 "body.  Optional NAME, if specified, has to be a symbol, which is then bound "
 "to the object of the section being inserted."
 msgstr ""
-"BODYは、セクションの見出しと本文を実際に挿入する任意の数のフォームです。"
-"オプションのNAMEは、指定されている場合、セクションを挿入するオブジェクトにバインドされるシンボルである必要があります。"
+"BODYは、セクションの見出しと本文を実際に挿入する任意の数のフォームです。オプ"
+"ションのNAMEは、指定されている場合、セクションを挿入するオブジェクトにバイン"
+"ドされるシンボルである必要があります。"
 
 #. type: defmac
 #: orig/magit-section.texi:124
@@ -231,7 +241,8 @@ msgid ""
 "the new value of @code{point}; BODY is responsible for moving @code{point} "
 "forward."
 msgstr ""
-"BODYが評価される前に、セクションオブジェクトの@code{start}は`point'の値に設定され、BODYが評価された後に@code{end}が@code{point}の新しい値に設定されます。"
+"BODYが評価される前に、セクションオブジェクトの@code{start}は`point'の値に設定"
+"され、BODYが評価された後に@code{end}が@code{point}の新しい値に設定されます。"
 "BODYは、@code{point}を前方に移動する責任があります。"
 
 #. type: defmac
@@ -242,8 +253,10 @@ msgid ""
 "inserted section.  This can happen when creating a section by washing Git's "
 "output and Git didn't actually output anything this time around."
 msgstr ""
-"BODYの中でセクションが空であることがわかった場合、@code{magit-cancel-section}を使用して、部分的に挿入されたセクションのすべての痕跡を中止して削除できます。"
-"これは、Gitの出力を洗浄してセクションを作成し、今回はGitが実際に何も出力しなかった場合に発生する可能性があります。"
+"BODYの中でセクションが空であることがわかった場合、@code{magit-cancel-section}"
+"を使用して、部分的に挿入されたセクションのすべての痕跡を中止して削除できま"
+"す。これは、Gitの出力を洗浄してセクションを作成し、今回はGitが実際に何も出力"
+"しなかった場合に発生する可能性があります。"
 
 #. type: defun
 #: orig/magit-section.texi:132
@@ -254,8 +267,7 @@ msgstr ""
 #. type: defun
 #: orig/magit-section.texi:134
 msgid "Insert the heading for the section currently being inserted."
-msgstr ""
-"現在挿入中のセクションの見出しを挿入します。"
+msgstr "現在挿入中のセクションの見出しを挿入します。"
 
 #. type: defun
 #: orig/magit-section.texi:136
@@ -271,8 +283,9 @@ msgid ""
 "@code{point}.  The section should only contain a single line when this "
 "function is used like this."
 msgstr ""
-"引数なしで呼び出された場合、挿入されているセクションを表すオブジェクトの@code{content}スロットを、@code{point}のマーカーに設定します。"
-"この関数がこのように使用されるとき、セクションには1行しか含まれていない必要があります。"
+"引数なしで呼び出された場合、挿入されているセクションを表すオブジェクトの"
+"@code{content}スロットを、@code{point}のマーカーに設定します。この関数がこの"
+"ように使用されるとき、セクションには1行しか含まれていない必要があります。"
 
 #. type: defun
 #: orig/magit-section.texi:149
@@ -284,10 +297,12 @@ msgid ""
 "strings, then insert all of them unchanged.  Otherwise use the `magit-"
 "section-heading' face for all inserted text."
 msgstr ""
-"文字列またはnilである必要がある引数ARGSで呼び出された場合、それらの文字列をポイントに挿入します。"
-"この操作が行われる前にセクションにテキストが含まれていない必要があり、その後も1行しか含まれていない必要があります。"
-"これらの文字列のいずれかの内部で@code{face}プロパティが設定されている場合、すべての文字列を変更せずに挿入します。"
-"それ以外の場合は、すべての挿入されたテキストに`magit-section-heading'フェイスを使用します。"
+"文字列またはnilである必要がある引数ARGSで呼び出された場合、それらの文字列をポ"
+"イントに挿入します。この操作が行われる前にセクションにテキストが含まれていな"
+"い必要があり、その後も1行しか含まれていない必要があります。これらの文字列のい"
+"ずれかの内部で@code{face}プロパティが設定されている場合、すべての文字列を変更"
+"せずに挿入します。それ以外の場合は、すべての挿入されたテキストに`magit-"
+"section-heading'フェイスを使用します。"
 
 #. type: defun
 #: orig/magit-section.texi:159
@@ -301,11 +316,12 @@ msgid ""
 "enforced, you are responsible for getting it right.  The only exception is "
 "that this function does insert a newline character if necessary."
 msgstr ""
-"セクションオブジェクトの@code{content}プロパティは、見出しの終わり（@code{start}から@code{content}まで）と本文の始まり（@code{content}から@code{end}まで）です。"
-"@code{content}の値がnilの場合、セクションには見出しがなく、その本文を折りたたむことはできません。"
-"セクションに見出しがある場合、その高さは、改行文字を含む1行になります。"
-"これは強制されません。正しく取得する責任があります。"
-"唯一の例外は、この関数が必要に応じて改行文字を挿入することです。"
+"セクションオブジェクトの@code{content}プロパティは、見出しの終わり"
+"（@code{start}から@code{content}まで）と本文の始まり（@code{content}から"
+"@code{end}まで）です。@code{content}の値がnilの場合、セクションには見出しがな"
+"く、その本文を折りたたむことはできません。セクションに見出しがある場合、その"
+"高さは、改行文字を含む1行になります。これは強制されません。正しく取得する責任"
+"があります。唯一の例外は、この関数が必要に応じて改行文字を挿入することです。"
 
 #. type: defmac
 #: orig/magit-section.texi:161
@@ -320,9 +336,10 @@ msgid ""
 "section is expanded when it is created, then this is like @code{progn}.  "
 "Otherwise BODY isn't evaluated until the section is explicitly expanded."
 msgstr ""
-"セクションが展開されると、BODYを使用してセクション本文を挿入します。"
-"セクションが作成されたときにセクションが展開されている場合、これは@code{progn}のようです。"
-"それ以外の場合、BODYはセクションが明示的に展開されるまで評価されません。"
+"セクションが展開されると、BODYを使用してセクション本文を挿入します。セクショ"
+"ンが作成されたときにセクションが展開されている場合、これは@code{progn}のよう"
+"です。それ以外の場合、BODYはセクションが明示的に展開されるまで評価されませ"
+"ん。"
 
 #. type: defun
 #: orig/magit-section.texi:168
@@ -336,8 +353,8 @@ msgid ""
 "Cancel inserting the section that is currently being inserted.  Remove all "
 "traces of that section."
 msgstr ""
-"現在挿入中のセクションの挿入をキャンセルします。"
-"そのセクションのすべての痕跡を削除します。"
+"現在挿入中のセクションの挿入をキャンセルします。そのセクションのすべての痕跡"
+"を削除します。"
 
 #. type: defun
 #: orig/magit-section.texi:173
@@ -351,8 +368,9 @@ msgid ""
 "Repeatedly call FUNCTION until it returns @code{nil} or the end of the "
 "buffer is reached.  FUNCTION has to move point forward or return @code{nil}."
 msgstr ""
-"FUNCTIONが@code{nil}を返すか、バッファの終わりに達するまで、FUNCTIONを繰り返し呼び出します。"
-"FUNCTIONは、ポイントを前方に移動するか、@code{nil}を返す必要があります。"
+"FUNCTIONが@code{nil}を返すか、バッファの終わりに達するまで、FUNCTIONを繰り返"
+"し呼び出します。FUNCTIONは、ポイントを前方に移動するか、@code{nil}を返す必要"
+"があります。"
 
 #. type: chapter
 #: orig/magit-section.texi:179 orig/magit-section.texi:180
@@ -374,9 +392,10 @@ msgid ""
 "provided the current buffer is the buffer in which the click occurred.  "
 "Otherwise return the section at point."
 msgstr ""
-"ポイントまたはコンテキストメニューが呼び出された場所にあるセクションを返します。"
-"コンテキストメニューを使用すると、現在のバッファがクリックが発生したバッファである場合に、ユーザーがクリックしたセクションを返します。"
-"それ以外の場合は、ポイントのセクションを返します。"
+"ポイントまたはコンテキストメニューが呼び出された場所にあるセクションを返しま"
+"す。コンテキストメニューを使用すると、現在のバッファがクリックが発生したバッ"
+"ファである場合に、ユーザーがクリックしたセクションを返します。それ以外の場合"
+"は、ポイントのセクションを返します。"
 
 #. type: item
 #: orig/magit-section.texi:190
@@ -390,9 +409,8 @@ msgid ""
 "Return the section at POSITION, defaulting to point.  Default to point even "
 "when the context menu is used."
 msgstr ""
-"POSITIONのセクションを返します。"
-"デフォルトはポイントです。"
-"コンテキストメニューを使用している場合でも、デフォルトはポイントになります。"
+"POSITIONのセクションを返します。デフォルトはポイントです。コンテキストメ"
+"ニューを使用している場合でも、デフォルトはポイントになります。"
 
 #. type: defun
 #: orig/magit-section.texi:195
@@ -406,8 +424,8 @@ msgid ""
 "Return an unique identifier for SECTION@. The return value has the form "
 "@code{((TYPE . VALUE)...)}."
 msgstr ""
-"セクションの一意の識別子を返します。"
-"戻り値の形式は@code{((TYPE . VALUE) ...)}です。"
+"セクションの一意の識別子を返します。戻り値の形式は@code{((TYPE . VALUE) ...)}"
+"です。"
 
 #. type: defun
 #: orig/magit-section.texi:200
@@ -430,10 +448,11 @@ msgid ""
 "equal.  Otherwise the catch-all method is used, which just returns the "
 "argument itself."
 msgstr ""
-"VALUEは、@code{magit-section}オブジェクトの値です。"
-"それがオブジェクト自体である場合、同じものを表していても等しくない可能性があるため、セクションを識別するためには適していません。"
-"可能な場合は、そのようなオブジェクトに対してメソッドを追加し、等しい値を返す必要があります。"
-"それ以外の場合は、キャッチオールメソッドが使用され、引数自体が返されます。"
+"VALUEは、@code{magit-section}オブジェクトの値です。それがオブジェクト自体であ"
+"る場合、同じものを表していても等しくない可能性があるため、セクションを識別す"
+"るためには適していません。可能な場合は、そのようなオブジェクトに対してメソッ"
+"ドを追加し、等しい値を返す必要があります。それ以外の場合は、キャッチオールメ"
+"ソッドが使用され、引数自体が返されます。"
 
 #. type: defun
 #: orig/magit-section.texi:212
@@ -449,9 +468,9 @@ msgid ""
 "that section tree instead of in the one whose root @code{magit-root-section} "
 "is."
 msgstr ""
-"IDENTで識別されるセクションを返します。"
-"IDENTは、@code{magit-section-ident}によって返されるリストである必要があります。"
-"オプションのROOTがnon-nilの場合、そのセクションツリーではなく、@code{magit-root-section}のルートで検索します。"
+"IDENTで識別されるセクションを返します。IDENTは、@code{magit-section-ident}に"
+"よって返されるリストである必要があります。オプションのROOTがnon-nilの場合、そ"
+"のセクションツリーではなく、@code{magit-root-section}のルートで検索します。"
 
 #. type: defun
 #: orig/magit-section.texi:219
@@ -464,9 +483,7 @@ msgstr ""
 msgid ""
 "Return the lineage of SECTION@.  The return value has the form "
 "@code{(TYPE...)}."
-msgstr ""
-"セクションの血統を返します。"
-"戻り値の形式は@code{(TYPE ...)}です。"
+msgstr "セクションの血統を返します。戻り値の形式は@code{(TYPE ...)}です。"
 
 #. type: defun
 #: orig/magit-section.texi:224
@@ -488,8 +505,10 @@ msgid ""
 "section} they do not act on point, the cursors position, but on the position "
 "where the user clicked to invoke the context menu."
 msgstr ""
-"次の2つの関数は、@code{magit-}接頭辞を除いて同じ名前を持つEmacs関数の代替です。"
-"@code{magit-current-section}のように、これらの関数はポイント、カーソルの位置ではなく、コンテキストメニューを呼び出すためにユーザーがクリックした位置で動作します。"
+"次の2つの関数は、@code{magit-}接頭辞を除いて同じ名前を持つEmacs関数の代替で"
+"す。@code{magit-current-section}のように、これらの関数はポイント、カーソルの"
+"位置ではなく、コンテキストメニューを呼び出すためにユーザーがクリックした位置"
+"で動作します。"
 
 #. type: Plain text
 #: orig/magit-section.texi:237
@@ -498,7 +517,10 @@ msgid ""
 "\"thing at point\", even if just as a default, then use the prefixed "
 "functions to teach them to instead use the click location when appropriate."
 msgstr ""
-"パッケージがコンテキストメニューを提供し、そのコマンドのいくつかが「ポイントのもの」に作用する場合、デフォルトとして使用する場合でも、適切な場合は代わりにクリック位置を使用するように、プレフィックス付きの関数を使用してそれらを教えます。"
+"パッケージがコンテキストメニューを提供し、そのコマンドのいくつかが「ポイント"
+"のもの」に作用する場合、デフォルトとして使用する場合でも、適切な場合は代わり"
+"にクリック位置を使用するように、プレフィックス付きの関数を使用してそれらを教"
+"えます。"
 
 #. type: item
 #: orig/magit-section.texi:239
@@ -514,9 +536,10 @@ msgid ""
 "current buffer is the buffer in which the click occurred.  Otherwise return "
 "the same value as @code{point}."
 msgstr ""
-"ポイントまたはコンテキストメニューが呼び出された位置を返します。"
-"コンテキストメニューを使用すると、現在のバッファがクリックが発生したバッファである場合に、ユーザーがクリックした位置を返します。"
-"それ以外の場合は、@code{point}と同じ値を返します。"
+"ポイントまたはコンテキストメニューが呼び出された位置を返します。コンテキスト"
+"メニューを使用すると、現在のバッファがクリックが発生したバッファである場合"
+"に、ユーザーがクリックした位置を返します。それ以外の場合は、@code{point}と同"
+"じ値を返します。"
 
 #. type: item
 #: orig/magit-section.texi:245
@@ -533,10 +556,11 @@ msgid ""
 "value as @code{thing-at-point}.  For the meaning of THING and NO-PROPERTIES "
 "see that function."
 msgstr ""
-"ポイントまたはコンテキストメニューが呼び出された場所のTHINGを返します。"
-"コンテキストメニューを使用すると、現在のバッファがクリックが発生したバッファである場合に、ユーザーがクリックしたものを返します。"
-"それ以外の場合は、@code{thing-at-point}と同じ値を返します。"
-"THINGとNO-PROPERTIESの意味については、その関数を参照してください。"
+"ポイントまたはコンテキストメニューが呼び出された場所のTHINGを返します。コンテ"
+"キストメニューを使用すると、現在のバッファがクリックが発生したバッファである"
+"場合に、ユーザーがクリックしたものを返します。それ以外の場合は、@code{thing-"
+"at-point}と同じ値を返します。THINGとNO-PROPERTIESの意味については、その関数を"
+"参照してください。"
 
 #. type: defun
 #: orig/magit-section.texi:256
@@ -555,8 +579,8 @@ msgid ""
 "SECTION defaults to the section at point.  If SECTION is not specified and "
 "there also is no section at point, then return nil."
 msgstr ""
-"SECTIONのデフォルトはポイントのセクションです。"
-"SECTIONが指定されていない場合、ポイントにセクションがない場合は、nilを返します。"
+"SECTIONのデフォルトはポイントのセクションです。SECTIONが指定されていない場"
+"合、ポイントにセクションがない場合は、nilを返します。"
 
 #. type: defun
 #: orig/magit-section.texi:264
@@ -575,8 +599,9 @@ msgid ""
 "CLASS or a subclass of that; the section's parent class matches the second "
 "CLASS; and so on."
 msgstr ""
-"@code{[CLASS ...]}は、セクションのクラスが最初のCLASSと同じか、そのサブクラスである場合に一致します。"
-"セクションの親クラスは2番目のCLASSに一致し、以降も同様です。"
+"@code{[CLASS ...]}は、セクションのクラスが最初のCLASSと同じか、そのサブクラス"
+"である場合に一致します。セクションの親クラスは2番目のCLASSに一致し、以降も同"
+"様です。"
 
 #. type: itemize
 #: orig/magit-section.texi:277
@@ -584,7 +609,8 @@ msgid ""
 "@code{[* CLASS...]} matches sections that match [CLASS@dots{}] and also "
 "recursively all their child sections."
 msgstr ""
-"@code{[* CLASS ...]}は、[CLASS@dots{}]に一致するセクションと、再帰的にすべての子セクションに一致します。"
+"@code{[* CLASS ...]}は、[CLASS@dots{}]に一致するセクションと、再帰的にすべて"
+"の子セクションに一致します。"
 
 #. type: itemize
 #: orig/magit-section.texi:281
@@ -592,8 +618,8 @@ msgid ""
 "@code{CLASS} matches if the section's class is the same as CLASS or a "
 "subclass of that; regardless of the classes of the parent sections."
 msgstr ""
-"@code{CLASS}は、セクションのクラスがCLASSと同じか、そのサブクラスである場合に一致します。"
-"親セクションのクラスに関係なく。"
+"@code{CLASS}は、セクションのクラスがCLASSと同じか、そのサブクラスである場合に"
+"一致します。親セクションのクラスに関係なく。"
 
 #. type: defun
 #: orig/magit-section.texi:290
@@ -605,10 +631,12 @@ msgid ""
 "type-alist}, then a section also matches that type if its class is a "
 "subclass of the class that corresponds to the type as per that alist."
 msgstr ""
-"各CLASSは、@code{magit-section}から派生したクラスを識別するクラスシンボルである必要があります。"
-"後方互換性のために、CLASSは「タイプシンボル」であることもできます。"
-"セクションは、そのシンボルの@code{type}スロットの値が@code{eq}である場合に、そのようなシンボルに一致します。"
-"タイプシンボルに@code{magit--section-type-alist}のエントリがある場合、セクションは、そのエントリに従ってタイプに対応するクラスのサブクラスである場合にも一致します。"
+"各CLASSは、@code{magit-section}から派生したクラスを識別するクラスシンボルであ"
+"る必要があります。後方互換性のために、CLASSは「タイプシンボル」であることもで"
+"きます。セクションは、そのシンボルの@code{type}スロットの値が@code{eq}である"
+"場合に、そのようなシンボルに一致します。タイプシンボルに@code{magit--section-"
+"type-alist}のエントリがある場合、セクションは、そのエントリに従ってタイプに対"
+"応するクラスのサブクラスである場合にも一致します。"
 
 #. type: defun
 #: orig/magit-section.texi:294
@@ -617,7 +645,8 @@ msgid ""
 "printed by @code{magit-describe-section-briefly}, unless of course you want "
 "to be that precise."
 msgstr ""
-"もちろん、正確にしたい場合を除いて、@code{magit-describe-section-briefly}で印刷されるセクションの血統を完全に指定する必要はありません。"
+"もちろん、正確にしたい場合を除いて、@code{magit-describe-section-briefly}で印"
+"刷されるセクションの血統を完全に指定する必要はありません。"
 
 #. type: defun
 #: orig/magit-section.texi:296
@@ -637,9 +666,9 @@ msgid ""
 "there is no section at point and SECTION is nil, then return nil.  If the "
 "section does not match, then return nil."
 msgstr ""
-"オプションのSECTIONがnon-nilの場合、代わりにそれが一致するかどうかをテストします。"
-"ポイントにセクションがなく、SECTIONがnilの場合はnilを返します。"
-"セクションが一致しない場合は、nilを返します。"
+"オプションのSECTIONがnon-nilの場合、代わりにそれが一致するかどうかをテストし"
+"ます。ポイントにセクションがなく、SECTIONがnilの場合はnilを返します。セクショ"
+"ンが一致しない場合は、nilを返します。"
 
 #. type: defun
 #: orig/magit-section.texi:305
@@ -655,8 +684,7 @@ msgstr ""
 #. type: defmac
 #: orig/magit-section.texi:309
 msgid "Choose among clauses on the type of the section at point."
-msgstr ""
-"ポイントのセクションのタイプに応じて節を選択します。"
+msgstr "ポイントのセクションのタイプに応じて節を選択します。"
 
 #. type: defmac
 #: orig/magit-section.texi:316
@@ -667,11 +695,11 @@ msgid ""
 "BODY the symbol @code{it} is bound to the section at point.  If no clause "
 "succeeds or if there is no section at point, return nil."
 msgstr ""
-"各節は@code{(CONDITION BODY ...)}のようになります。"
-"セクションのタイプは、各CONDITIONと比較されます。"
-"最初に一致したBODYフォームが順次評価され、最後のフォームの値が返されます。"
-"BODYの内部では、シンボル@code{it}はポイントのセクションにバインドされます。"
-"節が成功しない場合、またはポイントにセクションがない場合は、nilを返します。"
+"各節は@code{(CONDITION BODY ...)}のようになります。セクションのタイプは、各"
+"CONDITIONと比較されます。最初に一致したBODYフォームが順次評価され、最後の"
+"フォームの値が返されます。BODYの内部では、シンボル@code{it}はポイントのセク"
+"ションにバインドされます。節が成功しない場合、またはポイントにセクションがな"
+"い場合は、nilを返します。"
 
 #. type: defmac
 #: orig/magit-section.texi:321
@@ -680,5 +708,6 @@ msgid ""
 "Additionally a CONDITION of t is allowed in the final clause, and matches if "
 "no other CONDITION match, even if there is no section at point."
 msgstr ""
-"CONDITIONが取ることができるフォームについては、@code{magit-section-match}を参照してください。"
-"さらに、最後の節ではtのCONDITIONが許可されており、他のCONDITIONが一致しなくても、ポイントにセクションがなくても一致します。"
+"CONDITIONが取ることができるフォームについては、@code{magit-section-match}を参"
+"照してください。さらに、最後の節ではtのCONDITIONが許可されており、他の"
+"CONDITIONが一致しなくても、ポイントにセクションがなくても一致します。"
